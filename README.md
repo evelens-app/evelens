@@ -10,6 +10,8 @@
 
 # EveLens
 
+<p align="center"><b>User guide:</b> <a href="docs/guide-en.md">English</a> · <a href="docs/guide-ru.md">Русский</a> · <a href="docs/guide-de.md">Deutsch</a> · <a href="docs/guide-zh-Hans.md">中文</a></p>
+
 A free companion app for EVE Online multiboxers on Windows: live previews of all your clients with visual alerts, intel, scanner analysis, and a personal advisor.
 
 EveLens never sends input to the game, never reads client memory, and never modifies game files. It only reads the logs EVE writes to disk and the official ESI API, and shows information on your screen.
@@ -52,7 +54,7 @@ EveLens never sends input to the game, never reads client memory, and never modi
 
 1. Download `EveLens.exe` from the [latest release](https://github.com/evelens-app/evelens/releases/latest). One file, no .NET installation required. Windows 10/11 x64.
 2. Run it. EveLens is not code-signed yet, so Windows may show **"Windows protected your PC"**. Click **More info → Run anyway**. Every release links a VirusTotal scan.
-3. The EveLens icon appears in the tray. Double-click it to open settings. Thumbnails show up as soon as EVE clients are running.
+3. The EveLens icon appears in the tray (it may be hidden under the **^** arrow). Double-click it to open settings. Thumbnails show up as soon as EVE clients are running.
 
 EveLens checks for new versions once a day and tells you when one is out. It never updates itself without you.
 
