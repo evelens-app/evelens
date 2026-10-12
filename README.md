@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/banner.jpg" alt="EveLens — see every client, miss nothing" width="100%"></p>
+<p align="center"><img src="assets/banner.jpg" alt="GridSight — see every client, miss nothing" width="100%"></p>
 
 <p align="center">
   <a href="https://github.com/evelens-app/evelens/releases/latest"><img src="https://img.shields.io/github/v/release/evelens-app/evelens?label=download&color=40e0d0" alt="Latest release"></a>
@@ -8,13 +8,13 @@
   <img src="https://img.shields.io/badge/price-free-2ea44f" alt="Free">
 </p>
 
-# EveLens
+# GridSight
 
 <p align="center"><b>User guide:</b> <a href="docs/guide-en.md">English</a> · <a href="docs/guide-ru.md">Русский</a> · <a href="docs/guide-de.md">Deutsch</a> · <a href="docs/guide-zh-Hans.md">中文</a></p>
 
 A free companion app for EVE Online multiboxers on Windows: live previews of all your clients with visual alerts, intel, scanner analysis, and a personal advisor.
 
-EveLens never sends input to the game, never reads client memory, and never modifies game files. It only reads the logs EVE writes to disk and the official ESI API, and shows information on your screen.
+GridSight never sends input to the game, never reads client memory, and never modifies game files. It only reads the logs EVE writes to disk and the official ESI API, and shows information on your screen.
 
 ## Features
 
@@ -52,25 +52,25 @@ EveLens never sends input to the game, never reads client memory, and never modi
 
 ## Download and install
 
-1. Download `EveLens.exe` from the [latest release](https://github.com/evelens-app/evelens/releases/latest). One file, no .NET installation required. Windows 10/11 x64.
-2. Run it. EveLens is not code-signed yet, so Windows may show **"Windows protected your PC"**. Click **More info → Run anyway**. Every release links a VirusTotal scan.
-3. The EveLens icon appears in the tray (it may be hidden under the **^** arrow). Double-click it to open settings. Thumbnails show up as soon as EVE clients are running.
+1. Download `GridSight.exe` from the [latest release](https://github.com/evelens-app/evelens/releases/latest). One file, no .NET installation required. Windows 10/11 x64.
+2. Run it. GridSight is not code-signed yet, so Windows may show **"Windows protected your PC"**. Click **More info → Run anyway**. Every release links a VirusTotal scan.
+3. The GridSight icon appears in the tray (it may be hidden under the **^** arrow). Double-click it to open settings. Thumbnails show up as soon as EVE clients are running.
 
-EveLens checks for new versions once a day and tells you when one is out. It never updates itself without you.
+GridSight checks for new versions once a day and tells you when one is out. It never updates itself without you.
 
 ## FAQ
 
-**Is it allowed by CCP?** EveLens follows the [CCP developer license](https://developers.eveonline.com/license-agreement) and the EULA: no input broadcasting, no automation, no memory reading, no client file changes. It reads the logs EVE writes to disk and the public ESI API, and only shows things on your screen.
+**Is it allowed by CCP?** GridSight follows the [CCP developer license](https://developers.eveonline.com/license-agreement) and the EULA: no input broadcasting, no automation, no memory reading, no client file changes. It reads the logs EVE writes to disk and the public ESI API, and only shows things on your screen.
 
-**Is my account safe?** ESI login uses EVE SSO; EveLens never sees your password. Tokens are stored encrypted with Windows DPAPI under your user account and never leave your PC. You can revoke access any time on the [EVE third-party applications page](https://community.eveonline.com/support/third-party-applications/).
+**Is my account safe?** ESI login uses EVE SSO; GridSight never sees your password. Tokens are stored encrypted with Windows DPAPI under your user account and never leave your PC. You can revoke access any time on the [EVE third-party applications page](https://community.eveonline.com/support/third-party-applications/).
 
 **Which EVE client languages are supported?** The interface is available in English, Russian, German and Chinese. Log-based alerts, damage and mining are tuned for the Russian client; English client support is in testing, other client languages are planned.
 
 ## Thanks and support
 
-Thank you for using EveLens! It is free, and no feature is locked behind a donation.
+Thank you for using GridSight! It is free, and no feature is locked behind a donation.
 
-If EveLens makes your fleet life easier, you can say thanks with any amount of ISK to the in-game character **Gridsin**. Supporters are listed below (tell Gridsin by in-game mail if you'd rather stay anonymous).
+If GridSight makes your fleet life easier, you can say thanks with any amount of ISK to the in-game character **Gridsin**. Supporters are listed below (tell Gridsin by in-game mail if you'd rather stay anonymous).
 
 ### Supporters
 
@@ -82,18 +82,22 @@ Ideas, wishes and bug reports are welcome in [Issues](https://github.com/evelens
 
 ## About this project
 
-EveLens is an independent project made by a fellow EVE player in spare time. Its only goal is to help capsuleers like me make the game a little easier and more comfortable.
+GridSight is an independent project made by a fellow EVE player in spare time. Its only goal is to help capsuleers like me make the game a little easier and more comfortable.
 
-EveLens is provided **"as is"**, without warranty of any kind. Use it at your own discretion; the author is not liable for any loss or damage arising from its use.
+GridSight is provided **"as is"**, without warranty of any kind. Use it at your own discretion; the author is not liable for any loss or damage arising from its use.
 
 ## Privacy
 
-EveLens runs entirely on your PC. There are no EveLens servers, no telemetry and no analytics; nothing is sent to the author. Game logs are read locally. Network requests go only to official EVE services (EVE SSO login and ESI, with your permission), public EVE community services (zKillboard, Fuzzwork market prices, EVE image server) and GitHub for the optional update check. See the user guide for the full list.
+GridSight runs entirely on your PC. There are no GridSight servers, no telemetry and no analytics; nothing is sent to the author. Game logs are read locally. Network requests go only to official EVE services (EVE SSO login and ESI, with your permission), public EVE community services (zKillboard, Fuzzwork market prices, EVE image server) and GitHub for the optional update check. See the user guide for the full list.
 
-EveLens is a registered third-party application on the EVE developer portal and works under the CCP developer license. EVE Online is developed by Fenris Creations (formerly CCP Games); EveLens is not affiliated with Fenris Creations or CCP.
+GridSight is a registered third-party application on the EVE developer portal and works under the CCP developer license. EVE Online is developed by Fenris Creations (formerly CCP Games); GridSight is not affiliated with Fenris Creations or CCP.
 
 ## Legal
 
-EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP hf. has granted permission to EveLens to use EVE Online and all associated logos and designs for promotional and information purposes on its website but does not endorse, and is not in any way affiliated with, EveLens. CCP is in no way responsible for the content on or functioning of this program, nor can it be liable for any damage arising from the use of this program.
+EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP hf. has granted permission to GridSight to use EVE Online and all associated logos and designs for promotional and information purposes on its website but does not endorse, and is not in any way affiliated with, GridSight. CCP is in no way responsible for the content on or functioning of this program, nor can it be liable for any damage arising from the use of this program.
 
 © 2014 CCP hf. All rights reserved. "EVE", "EVE Online", "CCP", and all related logos and images are trademarks or registered trademarks of CCP hf.
+
+---
+
+<p align="center"><b>Made by Gridsin</b> · <i>May the light of the Gate guide you, capsuleer.</i></p>

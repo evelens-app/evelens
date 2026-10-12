@@ -1,10 +1,10 @@
 [English](guide-en.md) · [Русский](guide-ru.md) · [Deutsch](guide-de.md) · **简体中文**
 
-# EveLens 用户指南
+# GridSight 用户指南
 
-本指南介绍如何安装、设置和使用 EveLens——一款面向 Windows 上 EVE Online 多开玩家的免费辅助工具。下文中的按钮和菜单名称均与 EveLens 简体中文界面中的显示完全一致。
+本指南介绍如何安装、设置和使用 GridSight——一款面向 Windows 上 EVE Online 多开玩家的免费辅助工具。下文中的按钮和菜单名称均与 GridSight 简体中文界面中的显示完全一致。
 
-EveLens 不会向游戏发送任何输入，不读取客户端内存，也不修改游戏文件。它只读取 EVE 写入磁盘的日志和官方 ESI API，并在你的屏幕上显示信息。
+GridSight 不会向游戏发送任何输入，不读取客户端内存，也不修改游戏文件。它只读取 EVE 写入磁盘的日志和官方 ESI API，并在你的屏幕上显示信息。
 
 ## 目录
 
@@ -20,7 +20,7 @@ EveLens 不会向游戏发送任何输入，不读取客户端内存，也不修
 10. [伤害监视器与采矿](#10-伤害监视器与采矿)
 11. [延迟与 FPS](#11-延迟与-fps)
 12. [EVE 登录 (ESI)](#12-eve-登录-esi)
-13. [EveLens.Snapshot 仪表板与顾问](#13-evelenssnapshot-仪表板与顾问)
+13. [GridSight.Snapshot 仪表板与顾问](#13-evelenssnapshot-仪表板与顾问)
 14. [语言、更新、开机自启](#14-语言更新开机自启)
 15. [故障排除 (FAQ)](#15-故障排除-faq)
 16. [支持与反馈](#16-支持与反馈)
@@ -29,58 +29,58 @@ EveLens 不会向游戏发送任何输入，不读取客户端内存，也不修
 
 ## 1. 系统要求
 
-- **Windows 10 或 11，64 位（x64）。** 无需安装 .NET 或其他组件——EveLens 只是一个 `EveLens.exe` 文件（约 165 MB，运行时已打包在内）。
-- **EVE 使用「窗口」或「无边框窗口」模式。** 在独占**全屏**模式下游戏会独占屏幕：EveLens 的窗口（缩略图、伤害浮窗、延迟/FPS 浮窗）无法显示在游戏上方。请使用「窗口」或「无边框窗口」。
+- **Windows 10 或 11，64 位（x64）。** 无需安装 .NET 或其他组件——GridSight 只是一个 `GridSight.exe` 文件（约 165 MB，运行时已打包在内）。
+- **EVE 使用「窗口」或「无边框窗口」模式。** 在独占**全屏**模式下游戏会独占屏幕：GridSight 的窗口（缩略图、伤害浮窗、延迟/FPS 浮窗）无法显示在游戏上方。请使用「窗口」或「无边框窗口」。
 - **内存：** 同时运行 5 个客户端时约占用 115–150 MB 内存；CPU 占用通常远低于 1%。
 - **网络** 仅用于可选功能：ESI 登录、情报地图和舰船分类（一次性下载 CCP 静态数据，约 95 MB）、市场价格、zKillboard 和检查更新。缩略图和警报离线也能使用。
 
 ## 2. 分步安装
 
 > [!WARNING]
-> **EveLens 目前尚未进行代码签名。**
+> **GridSight 目前尚未进行代码签名。**
 > 代码签名证书每年约需 200–400 美元，对一个独立的免费项目来说暂时负担不起。因此首次运行时，Windows SmartScreen 会弹出蓝色窗口：
 >
 > **「Windows 已保护你的电脑」**
 >
-> 要启动 EveLens，请点击 **更多信息**，然后点击 **仍要运行**。
+> 要启动 GridSight，请点击 **更多信息**，然后点击 **仍要运行**。
 >
-> 只对从官方 Releases 页面下载（第 1 步）并已校验的文件这样做。如果 `EveLens.exe` 来自其他任何地方——请不要运行。
+> 只对从官方 Releases 页面下载（第 1 步）并已校验的文件这样做。如果 `GridSight.exe` 来自其他任何地方——请不要运行。
 
 ### 第 1 步：下载并校验文件
 
-1. 打开 Releases 页面：**https://github.com/evelens-app/evelens/releases**，从最新版本下载 `EveLens.exe`。不要从其他网站、论坛或网盘下载 EveLens。
+1. 打开 Releases 页面：**https://github.com/evelens-app/evelens/releases**，从最新版本下载 `GridSight.exe`。不要从其他网站、论坛或网盘下载 GridSight。
 2. 浏览器可能提示该文件「不常被下载」。对新程序来说这很正常：打开下载菜单（「…」）并选择 **保留**。
 3. 每个版本的说明中都有 **VirusTotal** 链接——打开它查看该文件的检测结果。
 4. 可选：核对校验和。在文件所在文件夹中打开 **PowerShell** 并运行：
    ```powershell
-   Get-FileHash EveLens.exe
+   Get-FileHash GridSight.exe
    ```
    `SHA256` 的值必须与版本说明中给出的完全一致。如果不一致——请删除文件，并重新从 Releases 页面下载。
 
-### 第 2 步：把 EveLens.exe 放到单独的文件夹
+### 第 2 步：把 GridSight.exe 放到单独的文件夹
 
-EveLens 无需安装——文件放在哪里就从哪里运行。请为它选一个固定位置，例如：
+GridSight 无需安装——文件放在哪里就从哪里运行。请为它选一个固定位置，例如：
 
 ```
-%LOCALAPPDATA%\Programs\EveLens\
+%LOCALAPPDATA%\Programs\GridSight\
 ```
 
-（把这段粘贴到资源管理器地址栏，新建 `EveLens` 文件夹，并把 `EveLens.exe` 移进去），也可以使用你自己的任意文件夹。
+（把这段粘贴到资源管理器地址栏，新建 `GridSight` 文件夹，并把 `GridSight.exe` 移进去），也可以使用你自己的任意文件夹。
 
 - **不要**留在「下载」文件夹里——那里很容易被误删。
 - **不要**放进 EVE 游戏文件夹。
-- EveLens 不会在 exe 旁边写入任何文件。设置、布局和日志保存在 `%APPDATA%\EveLens\`。
-- 如果开启了开机自启，EveLens 会记住 exe 的路径。之后若移动了文件，请把「随 Windows 启动 EveLens」关闭后再重新打开。
+- GridSight 不会在 exe 旁边写入任何文件。设置、布局和日志保存在 `%APPDATA%\GridSight\`。
+- 如果开启了开机自启，GridSight 会记住 exe 的路径。之后若移动了文件，请把「随 Windows 启动 GridSight」关闭后再重新打开。
 
 ### 第 3 步：去掉「从网络下载」标记
 
-1. 右键点击 `EveLens.exe` → **属性**。
+1. 右键点击 `GridSight.exe` → **属性**。
 2. 在 **常规** 选项卡底部勾选 **解除锁定**（如果没有这个复选框，说明文件已经解除锁定）。
 3. 点击 **确定**。
 
 ### 第 4 步：首次运行与 SmartScreen
 
-双击 `EveLens.exe`。如果出现 **「Windows 已保护你的电脑」** 窗口，点击 **更多信息** → **仍要运行**（见本节开头的警告）。通常每个文件版本 Windows 只会询问一次。
+双击 `GridSight.exe`。如果出现 **「Windows 已保护你的电脑」** 窗口，点击 **更多信息** → **仍要运行**（见本节开头的警告）。通常每个文件版本 Windows 只会询问一次。
 
 ### 第 5 步：如果杀毒软件报警
 
@@ -88,7 +88,7 @@ EveLens 无需安装——文件放在哪里就从哪里运行。请为它选一
 
 - **不要关闭杀毒软件。**
 - 在 VirusTotal 上检查该文件（链接在版本说明中），并确认校验和一致（第 1 步）。
-- 如果你确信是误报，可以**只为这一个文件**添加排除项。在 Microsoft Defender 中：**Windows 安全中心** → **病毒和威胁防护** → 在「病毒和威胁防护设置」下点击 **管理设置** → **排除项** → **添加或删除排除项** → **添加排除项** → **文件** → 选择 `EveLens.exe`。
+- 如果你确信是误报，可以**只为这一个文件**添加排除项。在 Microsoft Defender 中：**Windows 安全中心** → **病毒和威胁防护** → 在「病毒和威胁防护设置」下点击 **管理设置** → **排除项** → **添加或删除排除项** → **添加排除项** → **文件** → 选择 `GridSight.exe`。
 - 如有疑虑，请不要运行，并在 [Issues](https://github.com/evelens-app/evelens/issues) 中告诉我们：使用的是哪款杀毒软件、它报告了什么。
 
 ### 第 6 步：检查 EVE 客户端设置
@@ -96,11 +96,11 @@ EveLens 无需安装——文件放在哪里就从哪里运行。请为它选一
 1. **窗口模式：** 在 EVE 的显示设置中选择 **「窗口」** 或 **「无边框窗口」**（不要用全屏）。
 2. **聊天记录：** 本地警报和情报功能读取的是聊天日志，因此 EVE 必须把聊天内容写入文件。请在 EVE 设置（Esc 菜单）中找到「将聊天记录保存到文件」的聊天选项（英文客户端中为 **「Log Chat to File」**）并确认已开启。否则本地和情报功能无法工作（缩略图和战斗警报不受影响）。
 3. **游戏日志（Gamelogs）**——战斗、跃迁扰断、货柜舱、采矿——由 EVE 自动写入，无需开启任何选项。
-4. **日志文件夹：** EVE 默认把日志写到 `文档\EVE\logs`（子文件夹 `Gamelogs` 和 `Chatlogs`）。如果「文档」文件夹已被移到 OneDrive，路径类似 `…\OneDrive\文档\EVE\logs`。两种情况 EveLens 都会自动找到（见[第 6 节](#6-eve-日志文件夹和客户端语言)）。
+4. **日志文件夹：** EVE 默认把日志写到 `文档\EVE\logs`（子文件夹 `Gamelogs` 和 `Chatlogs`）。如果「文档」文件夹已被移到 OneDrive，路径类似 `…\OneDrive\文档\EVE\logs`。两种情况 GridSight 都会自动找到（见[第 6 节](#6-eve-日志文件夹和客户端语言)）。
 
 ### 第 7 步：启动后会看到什么
 
-- EveLens 图标（一个橙色圆环）会出现在任务栏右下角、时钟旁边的系统托盘中。Windows 常把新图标藏在 **^** 箭头下面。想让它一直可见，可以把图标从 **^** 区域拖到任务栏上，或打开 **设置 → 个性化 → 任务栏 → 其他系统托盘图标**（Windows 11）并打开 EveLens。
+- GridSight 图标（一个橙色圆环）会出现在任务栏右下角、时钟旁边的系统托盘中。Windows 常把新图标藏在 **^** 箭头下面。想让它一直可见，可以把图标从 **^** 区域拖到任务栏上，或打开 **设置 → 个性化 → 任务栏 → 其他系统托盘图标**（Windows 11）并打开 GridSight。
 - **双击** 图标打开设置，**右键** 打开菜单。
 - EVE 客户端一运行，每个客户端都会出现一个缩略图。客户端停留在角色选择界面时，缩略图上显示「登录中…」。
 - 如果托盘菜单中显示「⚠ 未找到 EVE 日志文件夹」，说明这台电脑上还没运行过 EVE，或者日志在别的位置——见[第 6 节](#6-eve-日志文件夹和客户端语言)。
@@ -117,48 +117,48 @@ EveLens 无需安装——文件放在哪里就从哪里运行。请为它选一
 | 单项警报类型 | 开 | 设置 →「警报」（所有角色）或「角色」（单个角色） |
 | 临时停用所有警报 | — | 托盘：「暂停警报」 |
 | 检查更新 | 开 | 设置 →「常规」→「检查更新（每天一次，GitHub）」 |
-| 开机自启 | 关 | 设置 →「常规」→「随 Windows 启动 EveLens」 |
+| 开机自启 | 关 | 设置 →「常规」→「随 Windows 启动 GridSight」 |
 | 账号计时器 | 开（需先完成 Snapshot 登录才会工作） | 设置 →「常规」→「监视账号计时器」 |
 
 ### 第 9 步：更新
 
-1. 从 Releases 页面下载新的 `EveLens.exe` 并校验（第 1 步）。
-2. 关闭 EveLens：右键托盘图标 → **退出**。
-3. 在同一文件夹中用新文件替换旧的 `EveLens.exe`，并解除锁定（第 3 步）。
-4. 启动。所有设置和缩略图位置都会保留——它们保存在 `%APPDATA%\EveLens\`。
+1. 从 Releases 页面下载新的 `GridSight.exe` 并校验（第 1 步）。
+2. 关闭 GridSight：右键托盘图标 → **退出**。
+3. 在同一文件夹中用新文件替换旧的 `GridSight.exe`，并解除锁定（第 3 步）。
+4. 启动。所有设置和缩略图位置都会保留——它们保存在 `%APPDATA%\GridSight\`。
 
 ### 第 10 步：卸载
 
 1. 托盘图标 → **退出**。
-2. 如果开启过开机自启：退出前取消勾选「随 Windows 启动 EveLens」——或在注册表编辑器中删除 `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run` 下名为 `EveLens` 的值。
-3. 删除 `EveLens.exe`（如果用过，也删除 `EveLens.Snapshot.exe`）。
-4. 删除 `%APPDATA%\EveLens` 文件夹（设置、布局、令牌、缓存）。Snapshot 报告保存在 `%USERPROFILE%\eve-snapshot`——不需要的话也一并删除。
-5. 如果授予过 FPS 权限（第 11 节），请把自己移出该组：**以管理员身份打开命令提示符**，运行 EveLens 在「授予 FPS 权限（UAC）…」按钮下方显示的命令——形如 `net localgroup "Performance Log Users" "<计算机>\<用户>" /delete`。然后注销 Windows 并重新登录。
+2. 如果开启过开机自启：退出前取消勾选「随 Windows 启动 GridSight」——或在注册表编辑器中删除 `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run` 下名为 `GridSight` 的值。
+3. 删除 `GridSight.exe`（如果用过，也删除 `GridSight.Snapshot.exe`）。
+4. 删除 `%APPDATA%\GridSight` 文件夹（设置、布局、令牌、缓存）。Snapshot 报告保存在 `%USERPROFILE%\eve-snapshot`——不需要的话也一并删除。
+5. 如果授予过 FPS 权限（第 11 节），请把自己移出该组：**以管理员身份打开命令提示符**，运行 GridSight 在「授予 FPS 权限（UAC）…」按钮下方显示的命令——形如 `net localgroup "Performance Log Users" "<计算机>\<用户>" /delete`。然后注销 Windows 并重新登录。
 6. 如果通过 ESI 连接过角色，请在 CCP 网站上撤销访问权限：https://community.eveonline.com/support/third-party-applications/
 
 ## 3. 隐私与安全
 
-**一切都在你的电脑上运行。** EveLens 没有自己的服务器，没有遥测或统计分析，也没有账号系统。不会向作者发送任何数据。EVE 日志只在你的电脑上读取，不会上传到任何地方。
+**一切都在你的电脑上运行。** GridSight 没有自己的服务器，没有遥测或统计分析，也没有账号系统。不会向作者发送任何数据。EVE 日志只在你的电脑上读取，不会上传到任何地方。
 
-**EveLens 会连接哪些地址、用途是什么**——根据源代码整理的完整列表：
+**GridSight 会连接哪些地址、用途是什么**——根据源代码整理的完整列表：
 
 | 地址 | 用途 | 何时 |
 |---|---|---|
-| `login.eveonline.com` | EVE 官方登录（SSO） | 仅在你连接角色时（「连接 ESI」、`EveLens.Snapshot login`）以及续期访问权限时 |
+| `login.eveonline.com` | EVE 官方登录（SSO） | 仅在你连接角色时（「连接 ESI」、`GridSight.Snapshot login`）以及续期访问权限时 |
 | `esi.evetech.net` | EVE 官方 API。经你授权——已连接角色的数据（位置、舰船、在线状态；Snapshot 中为第 13 节列出的数据）。无需登录——公开数据：本地名单 → 军团/联盟、市场价格 | 已连接角色约每 30 秒更新一次 ESI 标签；本地分析；「采矿」窗口中的价格；账号计时器每 10 分钟；Snapshot |
 | `developers.eveonline.com` | CCP 的游戏静态数据（SDE）：星门地图、舰船分类、矿石体积。首次约 95 MB，之后最多每 7 天检查一次 | 仅在情报、定向扫描分析、「采矿」窗口或 Snapshot 需要时 |
 | `market.fuzzwork.co.uk` | Jita 价格汇总（常用的 EVE 公开市场服务） | 「采矿」窗口打开期间；Snapshot |
 | `zkillboard.com` | 飞行员击毁/损失统计；用于装配的深渊损失记录 | 仅在点击「用 zKill 检查」按钮时；Snapshot 的深渊装配部分（`--no-fits` 可关闭） |
 | `images.evetech.net` | HTML 报告中的 EVE 官方图片（物品、角色） | 仅 Snapshot |
-| `api.github.com` | 检查 EveLens 是否有新版本 | 每天一次；可通过「检查更新（每天一次，GitHub）」关闭 |
+| `api.github.com` | 检查 GridSight 是否有新版本 | 每天一次；可通过「检查更新（每天一次，GitHub）」关闭 |
 | EVE 游戏服务器，端口 26000 | 建立一个空 TCP 连接以测量延迟 | 仅在开启「通过连接服务器测延迟（每 30 秒一次）」时（默认关闭） |
 | `localhost:8642` | 仅限本机：接收浏览器返回的登录结果 | 仅在登录过程中 |
 
 「关于」窗口和 Snapshot 报告中的链接（GitHub、zKillboard、EVE University wiki）只有在你点击时才会在浏览器中打开。
 
-**登录令牌** 只保存在这台电脑上，使用 Windows DPAPI 加密，并与你的 Windows 账户绑定——其他用户或其他电脑无法解密。EveLens 永远看不到你的 EVE 密码：你是在 EVE 官方网站上登录的。
+**登录令牌** 只保存在这台电脑上，使用 Windows DPAPI 加密，并与你的 Windows 账户绑定——其他用户或其他电脑无法解密。GridSight 永远看不到你的 EVE 密码：你是在 EVE 官方网站上登录的。
 
-**许可与撤销访问。** EveLens 是在 EVE 开发者门户（developers.eveonline.com）注册的第三方应用，依据 [EVE 开发者许可](https://developers.eveonline.com/license-agreement) 运行。EVE Online 的开发商是 Fenris Creations 工作室（2026 年 5 月前名为 CCP Games）；许可由 CCP hf. 授予。EveLens 与 Fenris Creations / CCP 无任何关联。你可以随时在第三方应用页面撤销 EveLens 的访问权限：https://community.eveonline.com/support/third-party-applications/
+**许可与撤销访问。** GridSight 是在 EVE 开发者门户（developers.eveonline.com）注册的第三方应用，依据 [EVE 开发者许可](https://developers.eveonline.com/license-agreement) 运行。EVE Online 的开发商是 Fenris Creations 工作室（2026 年 5 月前名为 CCP Games）；许可由 CCP hf. 授予。GridSight 与 Fenris Creations / CCP 无任何关联。你可以随时在第三方应用页面撤销 GridSight 的访问权限：https://community.eveonline.com/support/third-party-applications/
 
 ## 4. 托盘图标和设置窗口
 
@@ -183,7 +183,7 @@ EveLens 无需安装——文件放在哪里就从哪里运行。请为它选一
 
 | 选项卡 | 内容 |
 |---|---|
-| 「角色」 | EveLens 见过的所有角色：是否在线、分组、单个角色的警报、「连接 ESI」按钮。 |
+| 「角色」 | GridSight 见过的所有角色：是否在线、分组、单个角色的警报、「连接 ESI」按钮。 |
 | 「分组与热键」 | 角色分组以及在组内切换的热键。 |
 | 「警报」 | 启用哪些警报、「测试」按钮、本地和情报设置。 |
 | 「伤害」 | 伤害监视器。 |
@@ -219,11 +219,11 @@ EveLens 无需安装——文件放在哪里就从哪里运行。请为它选一
 3. 设置「下一个角色」和「上一个角色」：点击输入框后按下组合键，例如 `Ctrl+Alt+F1`。不带 Ctrl/Alt/Shift/Win 时只能用 F1–F24；仅 Shift 不够；不能使用 Alt+F4。Backspace 清除，Esc 取消。
 4. 「切换顺序」为从上到下：拖动行或使用「上移」/「下移」。未运行客户端的角色会被跳过。
 
-如果组合键已被其他程序或 EveLens 的其他热键占用，EveLens 会以红字提示——请换一个。
+如果组合键已被其他程序或 GridSight 的其他热键占用，GridSight 会以红字提示——请换一个。
 
 ## 6. EVE 日志文件夹和客户端语言
 
-**自动检测。** EveLens 会在 `文档\EVE\logs` 中查找日志，并以「文档」文件夹的实际位置为准——包括被 Windows 移到 OneDrive 的情况（`…\OneDrive\文档\EVE\logs`）。如果该文件夹还不存在（EVE 从未运行过），EveLens 会等待，一旦出现就自动接入。
+**自动检测。** GridSight 会在 `文档\EVE\logs` 中查找日志，并以「文档」文件夹的实际位置为准——包括被 Windows 移到 OneDrive 的情况（`…\OneDrive\文档\EVE\logs`）。如果该文件夹还不存在（EVE 从未运行过），GridSight 会等待，一旦出现就自动接入。
 
 **检查：**「常规」→「EVE 日志文件夹」。路径下方显示：
 
@@ -232,7 +232,7 @@ EveLens 无需安装——文件放在哪里就从哪里运行。请为它选一
 
 **手动指定：** 点击「浏览…」，选择 `EVE` 里的 `logs` 文件夹（包含 `Gamelogs` 和 `Chatlogs` 的那个），或把路径粘贴到输入框中。
 
-**用于解析日志的 EVE 客户端语言。** 警报、伤害、采矿和本地都是根据游戏日志的文本识别的，所以 EveLens 需要知道客户端语言。它与 EveLens 界面语言无关。「常规」→「语言」→「EVE 客户端语言（用于解析日志）」：
+**用于解析日志的 EVE 客户端语言。** 警报、伤害、采矿和本地都是根据游戏日志的文本识别的，所以 GridSight 需要知道客户端语言。它与 GridSight 界面语言无关。「常规」→「语言」→「EVE 客户端语言（用于解析日志）」：
 
 - 「自动（根据日志文本）」——默认，根据日志文本识别俄文和英文客户端；
 - 「RU — 俄文客户端」/「EN — 英文客户端」——只使用该语言的匹配模板。
@@ -266,14 +266,14 @@ EVE 不会在日志中记录谁进入了本地频道，因此无法实现「星�
 
 ## 8. Intel 情报
 
-EveLens 可以读取你的情报频道，并高亮附近星系被报告的角色。
+GridSight 可以读取你的情报频道，并高亮附近星系被报告的角色。
 
 1. 确认 EVE 中已开启聊天记录（第 2 节第 6 步）。
 2. 「警报」→「情报」→ 勾选 **「监视情报频道」**。
 3. 在「频道」中填写频道名称，每行一个，与聊天日志文件名开头一致（`Chatlogs` 中形如 `<频道>_YYYYMMDD_HHMMSS_….txt` 的文件）。不区分大小写。
 4. 设置「半径：」——1 到 15 跳（默认 5）。
 
-首次启用时，EveLens 会下载 CCP 静态数据（约 95 MB）来构建星门地图；状态显示在滑块下方（「地图已加载：… 个有星门的星系。」）。
+首次启用时，GridSight 会下载 CCP 静态数据（约 95 MB）来构建星门地图；状态显示在滑块下方（「地图已加载：… 个有星门的星系。」）。
 
 **工作原理：** 如果频道消息中提到的星系距某个角色当前所在星系不超过半径（按星门跳数计算），该角色的缩略图会以紫色高亮，状态条显示 `Intel：<星系> · <N> 跳`（最近的一个）。角色所在星系取自本地频道或 ESI；未知时不对该角色计算情报。
 
@@ -283,7 +283,7 @@ EveLens 可以读取你的情报频道，并高亮附近星系被报告的角色
 
 ## 9. 定向扫描与本地分析
 
-EveLens 读取剪贴板中的文本——不会向游戏发送任何内容。
+GridSight 读取剪贴板中的文本——不会向游戏发送任何内容。
 
 **在游戏中如何复制：**
 
@@ -315,7 +315,7 @@ EveLens 读取剪贴板中的文本——不会向游戏发送任何内容。
 打开方式：托盘 →「采矿」（或快捷键：「常规」→「采矿」→「打开「采矿」窗口」，默认未设置）。窗口读取所有角色游戏日志中的采矿记录：矿石、冰矿、卫星矿和气云。
 
 - 每个角色：按类型统计的产量（数量、m³、ISK），「ISK/小时 · 10 分钟」「ISK/小时 · 本次会话」「m³/小时 · 10 分钟」「m³/小时 · 本次会话」，以及损耗。
-- 暂停超过 N 分钟后开始新会话（「暂停超过此时长后开始新会话」，默认 10）。如果 EveLens 在采矿中途启动，会从日志中回溯最近 6 小时。
+- 暂停超过 N 分钟后开始新会话（「暂停超过此时长后开始新会话」，默认 10）。如果 GridSight 在采矿中途启动，会从日志中回溯最近 6 小时。
 - ISK 按 Jita 4-4 买单计算，未扣税。「按压缩矿石计算」——有压缩形态时按压缩矿石价格计算。
 
 **矿石舱：** EVE 不会在日志中记录舱容——请在角色卡片中填写（「矿石舱，m³」）。之后即可看到占用情况和「约 mm:ss 后装满」。卸货后点击 **「已卸货」**——从此刻起重新计算占用。「矿石舱约 95% 时高亮缩略图」会根据该估算点亮黄色「舰船」警报（每次装满提醒一次，无声音）。
@@ -327,45 +327,45 @@ EveLens 读取剪贴板中的文本——不会向游戏发送任何内容。
 - 「延迟/FPS：缩略图」/「在缩略图上显示」——在每个缩略图状态条右侧显示 `62 fps · 38 ms`（情报文字亮起时优先显示情报）；
 - 「延迟/FPS：主窗口」/「在主窗口上方显示（EVE 客户端处于焦点时）」——在当前活动 EVE 窗口的角落显示一个小浮窗；角落在「主窗口角落」中设置（默认「右上」）。独占全屏模式下不可见。
 
-数据来自 Windows 系统跟踪（ETW，与 PresentMon 原理相同）。不会向客户端注入任何内容，默认情况下 EveLens 也不会连接 CCP 服务器。
+数据来自 Windows 系统跟踪（ETW，与 PresentMon 原理相同）。不会向客户端注入任何内容，默认情况下 GridSight 也不会连接 CCP 服务器。
 
-**FPS 权限。** Windows 跟踪要求 EveLens 以管理员身份运行，或者你是 **「Performance Log Users」** 组的成员（EveLens 会显示该组在你的 Windows 中的名称）。否则缩略图上显示 `FPS：无权限`，设置中会出现 **「授予 FPS 权限（UAC）…」** 按钮：
+**FPS 权限。** Windows 跟踪要求 GridSight 以管理员身份运行，或者你是 **「Performance Log Users」** 组的成员（GridSight 会显示该组在你的 Windows 中的名称）。否则缩略图上显示 `FPS：无权限`，设置中会出现 **「授予 FPS 权限（UAC）…」** 按钮：
 
-1. 点击「授予 FPS 权限（UAC）…」并在 UAC 提示中确认。EveLens 只运行一条命令：`net localgroup "<组>" "<你>" /add`。
+1. 点击「授予 FPS 权限（UAC）…」并在 UAC 提示中确认。GridSight 只运行一条命令：`net localgroup "<组>" "<你>" /add`。
 2. **注销 Windows 并重新登录**（或重启）——权限只有在重新登录后才生效。
-3. 启动 EveLens，必要时点击「重新检查」。状态应变为「跟踪已启动：…」。
+3. 启动 GridSight，必要时点击「重新检查」。状态应变为「跟踪已启动：…」。
 
 > [!IMPORTANT]
-> 这是针对你**整个 Windows 用户账户**的权限，而不仅限于 EveLens：以你的身份运行的任何程序都能进行 Windows 性能跟踪。撤销方法：以管理员身份运行设置中显示的命令 `net localgroup "<组>" "<你>" /delete`，然后重新登录。
+> 这是针对你**整个 Windows 用户账户**的权限，而不仅限于 GridSight：以你的身份运行的任何程序都能进行 Windows 性能跟踪。撤销方法：以管理员身份运行设置中显示的命令 `net localgroup "<组>" "<你>" /delete`，然后重新登录。
 
-**延迟：** EveLens 被动读取 Windows 自身为客户端与 EVE 服务器（端口 26000）之间连接测得的平滑往返时间。显示 `— ms` 表示没有连接（登录界面、离线），或客户端超过 60 秒没有发送数据。
+**延迟：** GridSight 被动读取 Windows 自身为客户端与 EVE 服务器（端口 26000）之间连接测得的平滑往返时间。显示 `— ms` 表示没有连接（登录界面、离线），或客户端超过 60 秒没有发送数据。
 
-**「通过连接服务器测延迟（每 30 秒一次）」**——默认关闭。这是无法被动测量（没有跟踪权限）时的备用方式：EveLens 向 CCP 服务器建立一个空 TCP 连接，测量握手时间后立即关闭。不传输任何数据，但对 CCP 服务器来说是额外的连接——除非需要，否则不建议开启。
+**「通过连接服务器测延迟（每 30 秒一次）」**——默认关闭。这是无法被动测量（没有跟踪权限）时的备用方式：GridSight 向 CCP 服务器建立一个空 TCP 连接，测量握手时间后立即关闭。不传输任何数据，但对 CCP 服务器来说是额外的连接——除非需要，否则不建议开启。
 
 ## 12. EVE 登录 (ESI)
 
 **有什么用：**
 
-- 在 EveLens 中：缩略图上显示「星系 · 舰船」标签（约每 30 秒更新一次；角色下线时显示「offline」），并且在第一次跳跃前就能为情报功能提供当前星系；
-- 在 EveLens.Snapshot 中（第 13 节）：角色仪表板、顾问和账号计时器。
+- 在 GridSight 中：缩略图上显示「星系 · 舰船」标签（约每 30 秒更新一次；角色下线时显示「offline」），并且在第一次跳跃前就能为情报功能提供当前星系；
+- 在 GridSight.Snapshot 中（第 13 节）：角色仪表板、顾问和账号计时器。
 
-**在 EveLens 中连接角色：**
+**在 GridSight 中连接角色：**
 
 1. 「角色」选项卡 → 角色旁的 **「连接 ESI」**。
 2. 浏览器会打开 EVE 官方登录页面（login.eveonline.com）。登录后**选择同一个角色**并确认授权。
-3. 浏览器返回 EveLens，状态变为「ESI 已连接」。如果你在浏览器中选择了其他角色，EveLens 会连接那个角色并提示你。
+3. 浏览器返回 GridSight，状态变为「ESI 已连接」。如果你在浏览器中选择了其他角色，GridSight 会连接那个角色并提示你。
 
-EveLens 使用自带的内置 ESI 应用，因此「常规」中的「EVE Developers 应用的 Client ID」**可以留空**。只有想使用自己的应用时才需要填写。
+GridSight 使用自带的内置 ESI 应用，因此「常规」中的「EVE Developers 应用的 Client ID」**可以留空**。只有想使用自己的应用时才需要填写。
 
-**请求的权限（EveLens）：** 只有三个只读 scope——当前位置（`esi-location.read_location.v1`）、当前舰船（`esi-location.read_ship_type.v1`）和在线状态（`esi-location.read_online.v1`）。
+**请求的权限（GridSight）：** 只有三个只读 scope——当前位置（`esi-location.read_location.v1`）、当前舰船（`esi-location.read_ship_type.v1`）和在线状态（`esi-location.read_online.v1`）。
 
-**安全：** EveLens 永远看不到你的密码——登录通过 EVE SSO 完成。令牌使用 Windows DPAPI 加密，保存在你的 Windows 账户下（`%APPDATA%\EveLens\tokens.bin`，Snapshot 为 `snapshot-tokens.bin`），不会离开你的电脑。
+**安全：** GridSight 永远看不到你的密码——登录通过 EVE SSO 完成。令牌使用 Windows DPAPI 加密，保存在你的 Windows 账户下（`%APPDATA%\GridSight\tokens.bin`，Snapshot 为 `snapshot-tokens.bin`），不会离开你的电脑。
 
 **撤销访问：** 角色旁的「断开 ESI」会删除电脑上的令牌。要撤销授权本身，请使用 CCP 页面：https://community.eveonline.com/support/third-party-applications/。如果访问失效，托盘中会出现「重新连接 ESI…」，角色旁的按钮会变为「重新登录」。
 
-## 13. EveLens.Snapshot 仪表板与顾问
+## 13. GridSight.Snapshot 仪表板与顾问
 
-`EveLens.Snapshot.exe` 是一个单独的命令行程序。它通过 ESI 以只读方式为角色生成快照，并生成 Markdown 报告和独立的 HTML 仪表板：钱包、技能、资产及 ISK 估值、订单、合同、工业、蓝图、行星开发、克隆体、LP/声望、装配——另外还有顾问：
+`GridSight.Snapshot.exe` 是一个单独的命令行程序。它通过 ESI 以只读方式为角色生成快照，并生成 Markdown 报告和独立的 HTML 仪表板：钱包、技能、资产及 ISK 估值、订单、合同、工业、蓝图、行星开发、克隆体、LP/声望、装配——另外还有顾问：
 
 - **制造**——按 Jita 价格计算你蓝图的利润；
 - **精炼与采矿**——原矿出售、压缩还是精炼；
@@ -374,31 +374,31 @@ EveLens 使用自带的内置 ESI 应用，因此「常规」中的「EVE Develo
 - **深渊装配**——来自 zKillboard 的热门装配，并对照你的技能和资产检查，附 Jita 批量购买清单；
 - **待办**——汇总所有部分的建议。
 
-**命令**（在 `EveLens.Snapshot.exe` 所在文件夹的终端中运行；在 PowerShell 中需加前缀 `.\`）：
+**命令**（在 `GridSight.Snapshot.exe` 所在文件夹的终端中运行；在 PowerShell 中需加前缀 `.\`）：
 
 | 命令 | 作用 |
 |---|---|
-| `EveLens.Snapshot login` | 在浏览器中登录 EVE（仅只读权限）；每个角色只需一次 |
-| `EveLens.Snapshot login --fits-write` | 同上，并授予写入已保存装配的权限（仅 `--export-fits` 需要） |
-| `EveLens.Snapshot` | 为所有已连接角色生成快照 |
-| `EveLens.Snapshot -c "<角色>"` | 为单个角色生成快照 |
-| `EveLens.Snapshot -c "<角色>" --export-fits <舰体\|all> [--top N]` | 把该舰体排名前 N（1–3）的深渊装配写入游戏的已保存装配，名称为 `EveLens <舰体> #N` |
-| `EveLens.Snapshot --lang zh-Hans` | 报告语言：`zh-Hans`、`en`、`ru`、`de`（默认取 EveLens 界面语言，否则取 Windows 语言） |
-| `EveLens.Snapshot --help` | 完整参数列表（`--no-open`、`--no-market`、`--no-fits` 等） |
+| `GridSight.Snapshot login` | 在浏览器中登录 EVE（仅只读权限）；每个角色只需一次 |
+| `GridSight.Snapshot login --fits-write` | 同上，并授予写入已保存装配的权限（仅 `--export-fits` 需要） |
+| `GridSight.Snapshot` | 为所有已连接角色生成快照 |
+| `GridSight.Snapshot -c "<角色>"` | 为单个角色生成快照 |
+| `GridSight.Snapshot -c "<角色>" --export-fits <舰体\|all> [--top N]` | 把该舰体排名前 N（1–3）的深渊装配写入游戏的已保存装配，名称为 `GridSight <舰体> #N` |
+| `GridSight.Snapshot --lang zh-Hans` | 报告语言：`zh-Hans`、`en`、`ru`、`de`（默认取 GridSight 界面语言，否则取 Windows 语言） |
+| `GridSight.Snapshot --help` | 完整参数列表（`--no-open`、`--no-market`、`--no-fits` 等） |
 
 Snapshot 登录只请求只读权限：技能与技能队列、钱包、资产、市场订单、合同、工业任务与采矿、蓝图、行星、克隆体与植入体、LP、声望、装配、建筑和位置。只有执行 `login --fits-write` 后才能写入，且只会写入已保存的装配。
 
 **HTML 在哪里：** `%USERPROFILE%\eve-snapshot\`——`latest-<角色>.html`（每次快照后会自动在浏览器中打开；`--no-open` 可跳过）以及带日期的副本 `<角色>-<日期>.html` 和 `.md`。该文件可离线使用，可以复制到任何地方。
 
-**托盘中的账号计时器：** 执行 `EveLens.Snapshot login` 后，EveLens 每 10 分钟检查行星开发提取器、空闲的制造槽位和技能队列。有需要处理的事项时，托盘图标上会出现圆点；列表在托盘 →「计时器」中（点击条目可打开最近的快照）。可通过「常规」→「监视账号计时器」关闭。
+**托盘中的账号计时器：** 执行 `GridSight.Snapshot login` 后，GridSight 每 10 分钟检查行星开发提取器、空闲的制造槽位和技能队列。有需要处理的事项时，托盘图标上会出现圆点；列表在托盘 →「计时器」中（点击条目可打开最近的快照）。可通过「常规」→「监视账号计时器」关闭。
 
 ## 14. 语言、更新、开机自启
 
 **界面语言：**「常规」→「语言」→「界面语言」：「自动（跟随 Windows 语言）」、English、Русский、Deutsch、简体中文。立即生效。与 EVE 客户端语言无关（第 6 节）。来自 CCP 数据的物品名称在除俄文以外的所有界面中均显示为英文。
 
-**更新：**「检查更新（每天一次，GitHub）」默认开启。EveLens 每天向 GitHub 查询一次是否有新版本。如果有——托盘菜单中出现「有新版本 X…」，弹出一次通知，「关于」中也会显示一行提示。**EveLens 从不自行下载或安装任何内容**——请手动更新（第 2 节第 9 步）。「包含测试版」——测试版也会提示。手动检查：「关于」→「检查更新」。
+**更新：**「检查更新（每天一次，GitHub）」默认开启。GridSight 每天向 GitHub 查询一次是否有新版本。如果有——托盘菜单中出现「有新版本 X…」，弹出一次通知，「关于」中也会显示一行提示。**GridSight 从不自行下载或安装任何内容**——请手动更新（第 2 节第 9 步）。「包含测试版」——测试版也会提示。手动检查：「关于」→「检查更新」。
 
-**开机自启：**「常规」→「启动」→「随 Windows 启动 EveLens」。会把 EveLens 加入当前用户的启动项（注册表 `HKCU\…\Run`）；取消勾选即移除。
+**开机自启：**「常规」→「启动」→「随 Windows 启动 GridSight」。会把 GridSight 加入当前用户的启动项（注册表 `HKCU\…\Run`）；取消勾选即移除。
 
 ## 15. 故障排除 (FAQ)
 
@@ -406,7 +406,7 @@ Snapshot 登录只请求只读权限：技能与技能队列、钱包、资产�
 - EVE 是否以「窗口」或「无边框窗口」模式运行（不是全屏）？
 - 是否开启了「EVE 不在前台时隐藏所有缩略图」？开启后，其他程序处于活动状态时缩略图会隐藏。
 - 是否开启了「隐藏当前活动客户端的缩略图」？只有一个客户端时，它处于活动状态期间缩略图会隐藏。
-- EveLens 是否在运行（托盘中有图标，可能在 **^** 下面）？
+- GridSight 是否在运行（托盘中有图标，可能在 **^** 下面）？
 
 **缩略图位置不对 / 跑到屏幕外。** 开启编辑模式（`Ctrl+Alt+E`）并拖动它。拔掉显示器后，缩略图会移到主屏幕，显示器重新接上后会回到原位。缩略图与角色绑定：在选择角色之前，新客户端显示「登录中…」。
 
@@ -424,24 +424,28 @@ Snapshot 登录只请求只读权限：技能与技能队列、钱包、资产�
 4. 检查该类警报在「警报」或该角色的「角色」选项卡中没有被关闭，且托盘中没有勾选「暂停警报」。
 5. 本地和情报需要在 EVE 中开启聊天记录（第 2 节第 6 步）。
 
-**「Windows 已保护你的电脑」。** 这是正常现象——EveLens 尚未签名。先校验文件（第 2 节第 1 步），然后点击 **更多信息 → 仍要运行**。
+**「Windows 已保护你的电脑」。** 这是正常现象——GridSight 尚未签名。先校验文件（第 2 节第 1 步），然后点击 **更多信息 → 仍要运行**。
 
-**EveLens 无法启动 / 显示错误。** 错误信息中会注明日志位置。如果设置文件损坏，EveLens 会自动从 `settings.json.bak` 恢复设置。
+**GridSight 无法启动 / 显示错误。** 错误信息中会注明日志位置。如果设置文件损坏，GridSight 会自动从 `settings.json.bak` 恢复设置。
 
-**EveLens 日志在哪里、提交 Issue 时要附上什么。** 日志位于 `%APPDATA%\EveLens\logs\`（每天一个文件，`evelens-YYYYMMDD.log`）。在 [Issue](https://github.com/evelens-app/evelens/issues) 中请注明：
-- EveLens 版本（「关于」）；
+**GridSight 日志在哪里、提交 Issue 时要附上什么。** 日志位于 `%APPDATA%\GridSight\logs\`（每天一个文件，`evelens-YYYYMMDD.log`）。在 [Issue](https://github.com/evelens-app/evelens/issues) 中请注明：
+- GridSight 版本（「关于」）；
 - Windows 版本、EVE 窗口模式、EVE 客户端语言、客户端数量和显示器数量；
 - 你做了什么、预期是什么、实际发生了什么（附截图会很有帮助）；
 - 当天的日志文件。发送前请检查一遍——其中可能包含你的角色名，可以替换掉。
 
 ## 16. 支持与反馈
 
-EveLens 完全免费，没有任何功能需要捐赠才能使用。如果它让你的舰队生活更轻松，可以在游戏中向角色 **Gridsin** 转任意数额的 ISK 表示感谢（「关于」→「复制角色名」）。
+GridSight 完全免费，没有任何功能需要捐赠才能使用。如果它让你的舰队生活更轻松，可以在游戏中向角色 **Gridsin** 转任意数额的 ISK 表示感谢（「关于」→「复制角色名」）。
 
 建议、愿望和错误报告：[GitHub Issues](https://github.com/evelens-app/evelens/issues)，或通过游戏邮件发给 **Gridsin**。
 
-EveLens 是一位 EVE 玩家利用业余时间开发的独立项目。本程序按**「原样」**提供，不附带任何形式的担保；是否使用由你自行决定。EveLens 与 Fenris Creations / CCP hf. 无关联，也未获得其认可。
+GridSight 是一位 EVE 玩家利用业余时间开发的独立项目。本程序按**「原样」**提供，不附带任何形式的担保；是否使用由你自行决定。GridSight 与 Fenris Creations / CCP hf. 无关联，也未获得其认可。
 
 ---
 
 © 2014 CCP hf. All rights reserved. "EVE", "EVE Online", "CCP", and all related logos and images are trademarks or registered trademarks of CCP hf.
+
+---
+
+**由 Gridsin 制作** · *愿EVE之门的光芒指引你，克隆飞行员。*
