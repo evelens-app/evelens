@@ -46,7 +46,7 @@ EveLens checks for new versions once a day and tells you when one is out. It nev
 
 **Is my account safe?** ESI login uses EVE SSO; EveLens never sees your password. Tokens are stored encrypted with Windows DPAPI under your user account and never leave your PC. You can revoke access any time on the [EVE third-party applications page](https://community.eveonline.com/support/third-party-applications/).
 
-**Which EVE client languages are supported?** The interface is available in English, Russian, German and Chinese. Log-based alerts are tuned for the English and Russian clients; others are in progress.
+**Which EVE client languages are supported?** The interface is available in English, Russian, German and Chinese. Log-based alerts, damage and mining are tuned for the Russian client; English client support is in testing, other client languages are planned.
 
 ## Thanks and support
 
