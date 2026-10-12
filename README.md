@@ -78,6 +78,12 @@ If EveLens makes your fleet life easier, you can say thanks with any amount of I
 
 Ideas, wishes and bug reports are welcome in [Issues](https://github.com/evelens-app/evelens/issues), or by in-game mail to **Gridsin**.
 
+## About this project
+
+EveLens is an independent project made by a fellow EVE player in spare time. Its only goal is to help capsuleers like me make the game a little easier and more comfortable.
+
+EveLens is provided **"as is"**, without warranty of any kind. Use it at your own discretion; the author is not liable for any loss or damage arising from its use.
+
 ## Legal
 
 EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP hf. has granted permission to EveLens to use EVE Online and all associated logos and designs for promotional and information purposes on its website but does not endorse, and is not in any way affiliated with, EveLens. CCP is in no way responsible for the content on or functioning of this program, nor can it be liable for any damage arising from the use of this program.
