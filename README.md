@@ -32,6 +32,22 @@ EveLens never sends input to the game, never reads client memory, and never modi
 - Abyssal fits from zKillboard checked against your skills and assets, with a Jita multibuy list and export to in-game saved fittings.
 - Account timers in the tray: skills, industry jobs, PI extractors, market orders.
 
+## Screenshots
+
+<p align="center"><img src="assets/thumbnails.png" alt="Client thumbnails with attack, intel, damage, ping and FPS" width="100%"></p>
+<p align="center"><sub>Thumbnails of every client: red frame — under attack, purple — hostile reported 2 jumps away, plus outgoing/incoming DPS, ping and FPS.</sub></p>
+
+<table>
+  <tr>
+    <td width="50%" valign="top"><img src="assets/dscan.png" alt="D-Scan analysis"><br><sub>D-Scan analysis: threats first, then ship classes.</sub></td>
+    <td width="50%" valign="top"><img src="assets/mining.png" alt="Mining panel"><br><sub>Mining panel: ISK/hour, m³/hour and time until the hold is full.</sub></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top"><img src="assets/settings.png" alt="Settings"><br><sub>Settings: interface language, logs folder, hotkeys.</sub></td>
+    <td width="50%" valign="top"><img src="assets/damage.png" alt="Damage monitor overlay"><br><sub>Click-through damage monitor overlay.</sub><br><br><img src="assets/about.png" alt="About"><br><sub>About: say thanks with ISK, report a bug.</sub></td>
+  </tr>
+</table>
+
 ## Download and install
 
 1. Download `EveLens.exe` from the [latest release](https://github.com/evelens-app/evelens/releases/latest). One file, no .NET installation required. Windows 10/11 x64.
