@@ -84,6 +84,14 @@ EveLens is an independent project made by a fellow EVE player in spare time. Its
 
 EveLens is provided **"as is"**, without warranty of any kind. Use it at your own discretion; the author is not liable for any loss or damage arising from its use.
 
+## Privacy
+
+EveLens runs entirely on your PC. There are no EveLens servers, no telemetry and no analytics; nothing is sent to the author. Game logs are read locally. Network requests go only to official EVE services (EVE SSO login and ESI, with your permission), public EVE community services (zKillboard, Fuzzwork market prices, EVE image server) and GitHub for the optional update check. See the user guide for the full list.
+
+EveLens is a registered third-party application on the EVE developer portal and works under the CCP developer license. EVE Online is developed by Fenris Creations (formerly CCP Games); EveLens is not affiliated with Fenris Creations or CCP.
+
 ## Legal
 
 EVE Online and the EVE logo are the registered trademarks of CCP hf. All rights are reserved worldwide. All other trademarks are the property of their respective owners. EVE Online, the EVE logo, EVE and all associated logos and designs are the intellectual property of CCP hf. All artwork, screenshots, characters, vehicles, storylines, world facts or other recognizable features of the intellectual property relating to these trademarks are likewise the intellectual property of CCP hf. CCP hf. has granted permission to EveLens to use EVE Online and all associated logos and designs for promotional and information purposes on its website but does not endorse, and is not in any way affiliated with, EveLens. CCP is in no way responsible for the content on or functioning of this program, nor can it be liable for any damage arising from the use of this program.
+
+© 2014 CCP hf. All rights reserved. "EVE", "EVE Online", "CCP", and all related logos and images are trademarks or registered trademarks of CCP hf.
