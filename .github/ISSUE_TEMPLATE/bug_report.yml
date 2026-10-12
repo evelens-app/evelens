@@ -1,0 +1,45 @@
+name: Bug report
+description: Something in EveLens does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a problem! Please do not post ESI tokens, API keys or private information.
+  - type: input
+    id: version
+    attributes:
+      label: EveLens version
+      description: Tray icon → About
+      placeholder: v1.0.0
+    validations:
+      required: true
+  - type: dropdown
+    id: client-lang
+    attributes:
+      label: EVE client language
+      options: [English, Russian, German, Chinese, French, Japanese, Spanish, Other]
+    validations:
+      required: true
+  - type: dropdown
+    id: window-mode
+    attributes:
+      label: EVE window mode
+      options: [Fixed window, Window mode, Fullscreen, Not relevant]
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log lines (optional)
+      description: "From %APPDATA%\EveLens\logs — remove character names if you prefer."
+      render: text

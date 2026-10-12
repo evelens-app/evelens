@@ -1,0 +1,15 @@
+name: Idea or wish
+description: Suggest a feature or an improvement
+labels: [idea]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like EveLens to do?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: How would it help your gameplay?
+      description: Multiboxing setup, activity (ratting, mining, abyssals, PvP…), anything that gives context.
