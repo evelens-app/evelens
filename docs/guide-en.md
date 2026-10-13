@@ -302,7 +302,7 @@ GridSight reads text from the clipboard only when you open this window — nothi
 - **Local:** in the chat window select the members (click the first, Shift+click the last, or `Ctrl+A`), then `Ctrl+C`.
 - **Items for appraisal** *(beta.2+)*: select items in an inventory window (cargo, hangar, container), press `Ctrl+A` if needed, then `Ctrl+C`.
 
-**How to open the analysis:** tray → "Parse clipboard (D-Scan / Local / appraisal)", or your own hotkey: "General" → "Clipboard parser (D-Scan / Local)" → "Open parser window" (not set by default). The window detects the format by itself; the "D-Scan" / "Local" / "Appraisal" buttons force a mode for the current text. After copying something new, click "Paste again" or press the hotkey again.
+**How to open the analysis:** tray → "Parse clipboard (D-Scan / Local / appraisal)", or your own hotkey: "General" → "Clipboard parser (D-Scan / Local / appraisal)" → "Open parser window" (not set by default). The window detects the format by itself; the "D-Scan" / "Local" / "Appraisal" buttons force a mode for the current text. After copying something new, click "Paste again" or press the hotkey again.
 
 **D-Scan result:** number of ships and other objects; ships by class and type; an "Attention" block for dangerous ships (interdictors/HICs, mobile bubbles, combat probes, interceptors, recons, bombers, Black Ops, logistics, capitals, supers). "On grid only (≤ 10,000 km)" hides far objects.
 
