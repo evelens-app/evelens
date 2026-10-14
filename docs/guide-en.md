@@ -86,7 +86,7 @@ GridSight doesn't need installing — it runs from wherever the file is. Choose 
 
 Double-click `GridSight.exe`. If the **"Windows protected your PC"** window appears and the hash matched, click **More info** → **Run anyway** (see the warning at the top of this section). Windows usually asks only once per file version.
 
-*(beta.2+)* On the very first start GridSight shows a short welcome window. After you close it, GridSight keeps running in the tray.
+*(beta.2+)* On the very first start GridSight shows the **"Welcome — GridSight"** window: where the tray icon is, what to do next, and a "Right now" status — how many EVE clients were found and whether the game log folder was found (if not, set it via "Open settings" → "General"). It also links to this guide, SECURITY and PRIVACY. Click "Got it" or tick "Don't show again"; GridSight keeps running in the tray.
 
 ### Step 5. If your antivirus complains
 
@@ -126,7 +126,8 @@ Everything in settings applies and saves instantly — there is no Save button.
 | Update check | on | Settings → "General" → "Check for updates (daily, GitHub)" |
 | Autostart | off | Settings → "General" → "Start GridSight with Windows" |
 | Account timers | on (work only after a character is connected in the Dashboard) | Settings → "General" → "Track account timers" |
-| Background trade-history sync *(beta.2+)* | on (together with account timers) | Settings → "General" → "Account timers" — a separate switch (section 13) |
+| Background trade-history sync *(beta.2+)* | on (works only while account timers are on) | Settings → "General" → "Account timers" → "Collect trade history (hourly)" (section 13) |
+| Market order watch *(beta.2+)* | on (works only while account timers are on and a character is connected in the Dashboard) | Settings → "General" → "Account timers" → "Watch my market orders (outbid, expiring)" (section 13) |
 
 ### Step 9. Updating
 
@@ -138,14 +139,14 @@ Everything in settings applies and saves instantly — there is no Save button.
 ### Step 10. Uninstalling
 
 1. If autostart is on, untick "Start GridSight with Windows" first — or later delete the `GridSight` value under `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run` in the Registry Editor.
-2. Optional: disconnect your characters — "Disconnect ESI" on the "Characters" tab and the disconnect button in the Dashboard window *(beta.2+)* (sections 12–13).
+2. Optional: disconnect your characters — "Disconnect ESI" on the "Characters" tab and *(beta.2+)* "Disconnect" in the Dashboard window (sections 12–13).
 3. Tray icon → **Exit**.
 4. Delete `GridSight.exe` (and `GridSight.Snapshot.exe`, if you used it).
-5. Delete the `%APPDATA%\GridSight` folder: settings, layout, login tokens (`tokens.bin`, `snapshot-tokens.bin`), trade history (`history.db`), the Dashboard's WebView2 profile (`webview2\`), logs and caches.
+5. Delete the `%APPDATA%\GridSight` folder: settings, layout, login tokens (`tokens.bin`, `snapshot-tokens.bin`), trade history (`history.db`), net worth history (`networth.json`), the Dashboard's WebView2 profile (`webview2\`), logs and caches.
 6. Delete `%USERPROFILE%\eve-snapshot` — Dashboard reports and raw ESI data (wallet, assets, location and more, **not encrypted**).
 7. If you used EveLens (the old name) before, also delete `%APPDATA%\EveLens` — it may still contain old copies of the login tokens.
 8. Optional: delete `%TEMP%\GridSight-logs` (a fallback log folder).
-9. If you granted FPS rights (section 11), remove yourself from the group: open **Command Prompt as administrator** and run `net localgroup "Performance Log Users" %USERNAME% /delete` (on a non-English Windows the group name is translated — GridSight shows the exact command under the "Grant FPS access (UAC)…" button). Then sign out of Windows and back in.
+9. If you granted FPS rights (section 11), remove yourself from the group *before* deleting GridSight: *(beta.2+)* "Revoke ETW rights (UAC)…" in "General" → "Ping & FPS", or open **Command Prompt as administrator** and run `net localgroup "Performance Log Users" %USERNAME% /delete` (on a non-English Windows the group name is translated — GridSight shows the exact command under the "Grant FPS access (UAC)…" button). Then sign out of Windows and back in.
 10. If you connected characters via ESI, revoke access on the CCP site: https://community.eveonline.com/support/third-party-applications/. Deleting local files alone does not revoke access.
 
 The same list with explanations is in [PRIVACY.md](../PRIVACY.md), section 8.
@@ -158,7 +159,7 @@ The same list with explanations is in [PRIVACY.md](../PRIVACY.md), section 8.
 
 **Network.** GridSight connects to official EVE services (SSO login, ESI API, image server, static data), zKillboard, Fuzzwork market prices and the GitHub API for the update check. Without any action from you it may: check GitHub for updates once a day (if enabled), refresh the ESI badge about every 30 s for connected characters, check account timers every 10 minutes and sync your trade history about once an hour *(beta.2+)*, and download EVE static data at most once a week. Everything else happens only when you use the feature. The full list — what is sent where, when, and how to turn it off — is in [NETWORK_CONNECTIONS.md](../NETWORK_CONNECTIONS.md).
 
-**What is stored on your PC:** settings, encrypted login tokens, your trade history *(beta.2+)*, caches of public data, logs, and Dashboard reports in `%USERPROFILE%\eve-snapshot`. The reports and the trade history are **not encrypted** — don't share these files or screenshots of the Dashboard unless you're comfortable showing that information. Details and how to delete everything: [PRIVACY.md](../PRIVACY.md).
+**What is stored on your PC:** settings, encrypted login tokens, your trade history and net worth history *(beta.2+)*, caches of public data, logs, and Dashboard reports in `%USERPROFILE%\eve-snapshot`. The reports, the trade history and the net worth history are **not encrypted** — don't share these files or screenshots of the Dashboard unless you're comfortable showing that information. Details and how to delete everything: [PRIVACY.md](../PRIVACY.md).
 
 **Login tokens** are stored only on this PC, encrypted with Windows DPAPI for your Windows account — another Windows user can't decrypt them (programs running under your own account can). They are sent only to CCP's own servers: to `login.eveonline.com` to refresh access and to `esi.evetech.net` with each authorized request — never to the author or any third party. GridSight never sees your EVE password: you log in on the official EVE website. Which permissions are requested and why: [ESI_PERMISSIONS.md](../ESI_PERMISSIONS.md).
 
@@ -177,6 +178,7 @@ The same list with explanations is in [PRIVACY.md](../PRIVACY.md), section 8.
 - "Version X available…" — only when a new version is out; opens the release page.
 - "Timers" — account timers (section 13), visible when timers are on.
 - "Dashboard" *(beta.2+)* — the Dashboard window (section 13).
+- "Market now" *(beta.2+)* — opens the Dashboard at the "Market now" section (section 13).
 - "Parse clipboard (D-Scan / Local / appraisal)" — section 9.
 - "Mining" — section 10.
 - "Damage monitor" — toggles the damage overlay.
@@ -186,7 +188,7 @@ The same list with explanations is in [PRIVACY.md](../PRIVACY.md), section 8.
 - "Ping/FPS: thumbnails", "Ping/FPS: main window" — section 11.
 - "Pause alerts" — temporarily stops new alerts.
 - "Язык / Language" — interface language.
-- "User guide" — opens this guide.
+- "Help & feedback" *(beta.2+)* — a submenu: "User guide" (opens this guide), "Report a bug" and "Suggest a feature" (open a GitHub Issue form in your browser — nothing is sent automatically), "Security & privacy" (opens SECURITY.md), "Check for updates". In 1.0.0-beta.1 there is only "User guide" here.
 - "About" — version, links, update check, support.
 - "Exit"
 
@@ -198,7 +200,7 @@ The same list with explanations is in [PRIVACY.md](../PRIVACY.md), section 8.
 | "Groups & hotkeys" | Groups of characters and hotkeys to cycle between them. |
 | "Alerts" | Which alerts are on, "Test" buttons, Local and Intel settings. |
 | "Damage" | Damage monitor. |
-| "General" | Language, EVE logs folder, thumbnails, edit mode hotkey, clipboard parser, mining, Dashboard hotkey, zKillboard contact, ping & FPS, startup and updates, account timers, ESI Client ID. |
+| "General" | Language, EVE logs folder, thumbnails, edit mode hotkey, clipboard parser, mining, Dashboard hotkey, zKillboard contact, ping & FPS, startup and updates, account timers, notifications (quiet hours), move to another PC, ESI Client ID. |
 
 At the bottom of the window — the "About / Support" link.
 
@@ -350,11 +352,11 @@ Measurements come from Windows system tracing (ETW, the same way PresentMon work
 3. Start GridSight and click "Check again" if needed. The status should say "Tracing is running: …".
 
 > [!IMPORTANT]
-> This is a right for your **whole Windows user account**, not just for GridSight: any program running as you will be able to trace Windows performance. It stays until you remove it — turning off Ping & FPS or uninstalling GridSight does not remove it. To revoke it: *(beta.2+)* use the button for revoking FPS access in "General" → "Ping & FPS" (it asks for UAC again), or run as administrator the command shown in the settings, `net localgroup "<group>" "<you>" /delete`. Then sign in again.
+> This is a right for your **whole Windows user account**, not just for GridSight: any program running as you will be able to trace Windows performance. It stays until you remove it — turning off Ping & FPS or uninstalling GridSight does not remove it. To revoke it: *(beta.2+)* click **"Revoke ETW rights (UAC)…"** in "General" → "Ping & FPS" (it asks for UAC again), or run as administrator the command shown in the settings, `net localgroup "<group>" "<you>" /delete`. Then sign in again.
 
 **Ping:** GridSight passively reads the smoothed round-trip time that Windows itself measures for the client's connection to the EVE server (port 26000). `— ms` means there is no connection (login screen, offline) or the client has been silent for more than 60 s.
 
-**"Ping by connecting to the server (every 30 s)"** — off by default. It's a fallback for when passive measurement isn't available (no tracing rights): GridSight opens an empty TCP connection to the CCP server, times the handshake and closes it. No data is sent, but these are extra connections to CCP's server, so we keep it off unless you need it.
+**"Ping by connecting to the server (every 30 s)"** — off by default. It's a fallback for when passive measurement isn't available (no tracing rights): GridSight opens an empty TCP connection to the CCP server, times the handshake and closes it. No data is sent, but these are extra connections to CCP's server, so we keep it off unless you need it. *(beta.2+)* When you turn it on, GridSight asks for confirmation ("Turn on active ping").
 
 ## 12. EVE login (ESI)
 
@@ -381,8 +383,8 @@ GridSight uses its own built-in ESI application, so the "EVE Developers applicat
 
 **Disconnecting and revoking access:**
 
-- "Disconnect ESI" next to the character removes the badge token from your PC.
-- *(beta.2+)* The Dashboard window has a button to disconnect the selected character: it deletes the character's token from your PC and revokes it at CCP. From the command line: `GridSight.Snapshot logout -c "<character>"`.
+- "Disconnect ESI" next to the character removes the badge token from your PC and *(beta.2+)* asks EVE SSO to revoke it.
+- *(beta.2+)* **"Disconnect"** in the Dashboard window disconnects the selected character: after a confirmation it deletes the character's token from your PC and revokes it in EVE SSO; snapshots stay. From the command line: `GridSight.Snapshot logout -c "<character>"` or `GridSight.Snapshot logout --all`.
 - To be sure access is revoked, use the CCP page: https://community.eveonline.com/support/third-party-applications/ — this invalidates the tokens on CCP's side even if copies remain on your disk.
 
 If access stops working, the tray shows "Reconnect ESI…" and the character's button changes to "Log in again".
@@ -399,7 +401,7 @@ If access stops working, the tray shows "Reconnect ESI…" and the character's b
 2. Click **"Take first snapshot"**. The first snapshot takes a couple of minutes: game static data and market prices are downloaded.
 3. Connect more characters the same way and switch between them in the list at the top of the window.
 
-**Buttons at the top:** "Refresh" — take a new snapshot of the selected character; "Connect character"; "Open in browser" — open the same report in your default browser; a button to disconnect the selected character (section 12). The time of the snapshot is shown next to them.
+**Buttons at the top:** "Refresh" — take a new snapshot of the selected character; "Connect character"; "Open in browser" — open the same report in your default browser; "Disconnect" *(beta.2+)* — disconnect the selected character (section 12). The time of the snapshot is shown next to them.
 
 **What's inside:** key figures, "To do" (a summary of advice from all sections), "Wallet", "Assets" with ISK estimate, "Skills", "Market" (orders and contracts), "Trade", "Industry", "Production", "PI", "PI → P2", "Mining", "Reprocessing", "Clones", "LP & standings", "Abyssal fits", "Fits" and "Profit". The advisor:
 
@@ -412,19 +414,25 @@ If access stops working, the tray shows "Reconnect ESI…" and the character's b
 
 **Filters and search.** Tables with a search field also have drop-down filters by column, "Ranges" with from–to values (you can type amounts like `300k` or `1.5m`), a "N of M" counter and "Reset filters". Filters, sorting and the chosen hub are remembered. **`Ctrl+K`** or **`/`** (or the "Search" button) opens a search across the whole snapshot — items, skills, locations: type at least 2 letters, pick with ↑↓, Enter jumps to the row, Esc closes.
 
+**Net worth** *(beta.2+)*. Under the key figures sits the strip **"Net worth"**: the total of your wallet, assets (market estimate), sell orders at their price and buy orders (price × remaining — an upper estimate of what is held in escrow), with the change over 7 and 30 days and a small line chart. With every snapshot GridSight saves one point per hour per character to `%APPDATA%\GridSight\networth.json` (kept 400 days, local only, **not encrypted**); a point is saved only when both the wallet and the assets are loaded. After the first snapshot the strip says the change will appear with the next snapshots.
+
+**Market now** *(beta.2+)*. The first section of the Dashboard ("Now" in the top menu, or tray → "Market now") is a short summary of "Trade" for the chosen hub: **Sell now to buy orders** (all your stacks where instant selling is the better deal, with the total), **List a sell order** (where an order pays noticeably more, with the price and expected time; the total leaves out "long wait" rows and rare items), **Buy and resell** (the best station-trading rows; volatile rows and rows with a suspiciously high margin are left out — they stay in "Trade") and **Fix your orders** (your orders that are outbid, expire soon or have expired — an expired order has to be placed again). For the main hub there is also **Pays more at another hub**: stacks that sell instantly at another calculated hub for at least 10 % and 3 million ISK more than the best way here (instantly or, where an order is advised, as an order); rare items and volatile prices are left out, hauling is not included. Rows show the same warnings as "To do". The copy button next to a row copies the item name for the in-game market search; Shift-click copies the English name. Prices are from the snapshot: the line at the top shows how old they are and suggests a new snapshot after an hour. It's advice, not a guarantee — check the order book before trading. *(beta.2+)* Cards also have a **"price X"** button that copies a price for the in-game order field: for "List a sell order" the suggested list price, for "Buy and resell" the buy-order price, for "Fix your orders" the price that beats the best competitor.
+
 **Trade hubs.** The "Trade" section is calculated for Jita, Amarr, Dodixie, Rens and Hek; switch the hub with the "Hub" selector. Broker fees take your standings into account. "To do" and the other sections use Jita.
 
 **Market movers.** Each hub in "Trade" has a "Market movers" card with three lists: "Rising" and "Falling" (7-day average vs 30-day average) and "Price spikes" (last day vs the monthly median). It's not the whole market — only items the snapshot already knows (scanner candidates and your stacks for sale).
 
-**Item card.** Click an item name anywhere in the Dashboard. The card loads live ESI data for 5 hubs: best sell and buy, margin after tax and broker fee, daily volume, number of orders and jumps from your current location. Click a hub for the 90-day price history, the "Margin calculator" and the station order books with "Your order" marked. The card also shows signals from the price history (rising, falling, spike, historically cheap or expensive, low supply…) and a short verdict, e.g. "Good time to buy", "Hub arbitrage" or "Where to sell" for items you have. These are hints from ESI history and orders, not a guarantee — check the order book before trading.
+**Item card.** Click an item name anywhere in the Dashboard. The card loads live ESI data for 5 hubs: best sell and buy, margin after tax and broker fee, daily volume, number of orders and jumps from your current location. Click a hub for the 90-day price history, the "Margin calculator" and the station order books with "Your order" marked. The card also shows signals from the price history (rising, falling, spike, historically cheap or expensive, low supply…) and a short verdict, e.g. "Good time to buy", "Hub arbitrage" or "Where to sell" for items you have. These are hints from ESI history and orders, not a guarantee — check the order book before trading. *(beta.2+)* **Price alert.** Under the margin calculator the card has a "Price alert · <hub>" block (in the Dashboard window only, not in a browser): choose "sell drops to ≤" or "buy rises to ≥", enter a price (prefilled with the current best) and press **"Watch"**. The list below shows the alerts for this item with a **"Remove"** button. Up to 50 alerts; one alert per item, hub and side — a new one replaces the old one. Alerts are stored locally in `%APPDATA%\GridSight\price-alerts.json` and checked on the same 10-minute cycle as account timers, so "Track account timers" must be on (if it is off, the card says so). A fired alert appears in tray → "Timers" in the group "Price alerts", puts a dot on the tray icon and shows one notification; clicking the line copies the current price.
 
 **Profit.** The "Profit" section calculates real profit from your trades: FIFO across all your connected characters, sales tax from the wallet journal, broker fees for the period, production cost from blueprint materials; periods, a daily chart and the top items. "No cost basis" lists sales without a purchase in history (loot, mining, LP, contracts or purchases before the history began) — they're not counted in profit. "Bought, not sold yet" is what's left in the FIFO queue. ESI keeps transactions for only about 30 days, so GridSight accumulates them in a local database, `%APPDATA%\GridSight\history.db`, with every snapshot and in the background (see below).
 
 **Price list.** In the Dashboard window you can correct the profit calculation: "Set cost" for items under "No cost basis" (for one batch or "for all future sales"), and "Personal use" for items you bought for yourself — they leave the FIFO queue and aren't counted as sales. Entries can be edited or deleted; GridSight saves them to `history.db` and refreshes the snapshot. These buttons only work inside the Dashboard window, not in a browser.
 
-**Account timers in the tray.** Once a character is connected in the Dashboard, GridSight checks every 10 minutes for PI extractors, free industry slots and the skill queue. A dot appears on the tray icon when something needs attention; the list is in tray → "Timers". On the same cycle, about once an hour per character, GridSight also syncs your wallet transactions, wallet journal and industry jobs into `history.db` for the "Profit" section. "General" → "Track account timers" turns timers off; *(beta.2+)* a separate switch in the same block turns off the background trade-history sync.
+**Account timers in the tray.** Once a character is connected in the Dashboard, GridSight checks every 10 minutes for PI extractors, free industry slots and the skill queue. A dot appears on the tray icon when something needs attention; the list is in tray → "Timers". On the same cycle, about once an hour per character, GridSight also syncs your wallet transactions, wallet journal and industry jobs into `history.db` for the "Profit" section. "General" → "Track account timers" turns timers off; *(beta.2+)* **"Collect trade history (hourly)"** in the same block turns off only the background trade-history sync (history is then updated only when you take a snapshot).
 
-**Network and files.** The Dashboard page opens without network by itself. When you open an item card, the page requests live market data from the public ESI and icons from `images.evetech.net`; no login data is sent, but the jump-count lookup tells CCP your current solar system. Reports are saved to `%USERPROFILE%\eve-snapshot\`: `latest-<character>.html`, dated copies `<character>-<date>.html` and `.md`, and raw ESI responses in `raw\`. They contain your wallet, assets, orders, location and more and are **not encrypted** — don't share them. Details: [PRIVACY.md](../PRIVACY.md), [NETWORK_CONNECTIONS.md](../NETWORK_CONNECTIONS.md).
+**Watching your market orders** *(beta.2+)*. On the same 10-minute cycle GridSight reads the open orders of the connected character and the public market books for their items (at most 40 books per character per cycle; the remaining orders are checked by expiry only). An order is **outbid** when another order at the same location on the same side has a better price (your own orders are ignored). Outbid orders, orders expiring within 24 hours and expired orders appear in tray → "Timers" and put a dot on the tray icon; more than 5 lines per character collapse into "…and N more". Clicking an outbid line copies the price that beats the best one by one EVE price step (4 significant digits), in the form the in-game order price field accepts (no thousands separators, dot as the decimal separator). A tray notification appears once when a new order gets outbid, not again for the same order. This uses the market-orders permission that the Dashboard login already requests; GridSight only reads orders and never changes them. Turn it off with **"Watch my market orders (outbid, expiring)"** in "General" → "Account timers" (or turn off the timers altogether).
+
+**Network and files.** The Dashboard page opens without network by itself. When you open an item card, the page requests live market data from the public ESI and icons from `images.evetech.net`; no login data is sent, but the jump-count lookup tells CCP your current solar system. Reports are saved to `%USERPROFILE%\eve-snapshot\`: `latest-<character>.html`, dated copies `<character>-<date>.html` and `.md`, and raw ESI responses in `raw\`. *(beta.2+)* Only the 20 most recent dated copies per character are kept (section 14, `--keep`). They contain your wallet, assets, orders, location and more and are **not encrypted** — don't share them. Details: [PRIVACY.md](../PRIVACY.md), [NETWORK_CONNECTIONS.md](../NETWORK_CONNECTIONS.md).
 
 ## 14. GridSight.Snapshot for advanced users (command line)
 
@@ -436,11 +444,11 @@ If access stops working, the tray shows "Reconnect ESI…" and the character's b
 |---|---|
 | `GridSight.Snapshot login` | EVE login in the browser (read-only permissions, same as "Connect character"); once per character |
 | `GridSight.Snapshot login --fits-write` | Same, plus permission to create saved fittings (needed only for `--export-fits`) |
-| `GridSight.Snapshot logout -c "<character>"` | *(beta.2+)* Delete the character's token from your PC and revoke it at CCP |
+| `GridSight.Snapshot logout -c "<character>"` | *(beta.2+)* Delete the character's token from your PC and revoke it at CCP; `logout --all` — all characters |
 | `GridSight.Snapshot` | Snapshot of all connected characters |
 | `GridSight.Snapshot -c "<character>"` | Snapshot of one character |
 | `GridSight.Snapshot -c "<character>" --export-fits <hull\|all> [--top N]` | Write the top N (1–3) abyssal fits for the hull into the game's saved fittings as `GridSight <Hull> #N` |
-| `GridSight.Snapshot --keep N` | *(beta.2+)* Keep only the N most recent dated copies of the reports |
+| `GridSight.Snapshot --keep N` | *(beta.2+)* Keep the N most recent dated copies of the reports per character (default 20; `0` — never delete) |
 | `GridSight.Snapshot --lang en` | Report language: `en`, `ru`, `de`, `zh-Hans` (default — the GridSight interface language, otherwise Windows) |
 | `GridSight.Snapshot --help` | Full list of options (`--no-open`, `--no-market`, `--no-fits`, `--hubs` and others) |
 
@@ -452,7 +460,11 @@ If access stops working, the tray shows "Reconnect ESI…" and the character's b
 
 **Interface language:** "General" → "Language" → "Interface language": "Auto (Windows language)", English, Русский, Deutsch, 简体中文 (also tray → "Язык / Language"). Applies immediately. It doesn't depend on the EVE client language (section 6). Names of items from CCP data are shown in English in all interfaces except Russian.
 
-**Updates:** "Check for updates (daily, GitHub)" is on by default. Once a day GridSight asks GitHub whether a new version exists. If yes — a tray menu item "Version X available…", one pop-up notification and a line in "About". **GridSight never downloads or installs anything by itself** — update manually (section 2, step 9). "Offer beta versions" — also notify about betas. You can check manually in "About" → "Check for updates".
+**Updates:** "Check for updates (daily, GitHub)" is on by default. Once a day GridSight asks GitHub whether a new version exists. If yes — a tray menu item "Version X available…", one pop-up notification and a line in "About". **GridSight never downloads or installs anything by itself** — update manually (section 2, step 9). "Offer beta versions" — also notify about betas. You can check manually in "About" → "Check for updates" or *(beta.2+)* tray → "Help & feedback" → "Check for updates".
+
+**Quiet hours** *(beta.2+)*. "General" → "Notifications": tick **"Quiet hours"** and set the hours in the two pickers (00:00–23:00). A range across midnight works too — 23:00 — 07:00; equal values mean the whole day. During quiet hours GridSight shows no pop-up notifications about prices, orders or a finished snapshot; the dot on the tray icon and the lines in "Timers" stay. First-run and data-migration notices are always shown. Off by default (the default range is 01:00–08:00). The **"Test notification"** button shows a sample notification even during quiet hours. If you see no notifications at all, check Windows Do not disturb.
+
+**Move to another PC** *(beta.2+)*. "General" → "Move to another PC": **"Export settings…"** writes a .zip with only `settings.json`, `layout.json`, `timers.json`, `mining.json` and `price-alerts.json`. ESI tokens (`*.bin`), trade history (`history.db`), net worth history, logs and caches are never included — connect your characters again on the new PC. **"Import settings…"** checks the archive (only those file names, each up to 2 MB, each a JSON object) and stages it; the import is applied on the next GridSight start (tray → "Exit", then start it again). The previous files are copied to a `backup-<date-time>` folder next to the settings in `%APPDATA%\GridSight`.
 
 **Autostart:** "General" → "Startup" → "Start GridSight with Windows". It adds GridSight to your user's startup list (registry `HKCU\…\Run`); unticking removes it.
 
@@ -486,11 +498,11 @@ If access stops working, the tray shows "Reconnect ESI…" and the character's b
 
 **GridSight doesn't start / shows an error.** The message says where the log is. If settings got corrupted, GridSight restores them from `settings.json.bak` automatically.
 
-**Where is the GridSight log and what to send in an Issue.** Logs are in `%APPDATA%\GridSight\logs\` (one file per day, `gridsight-YYYYMMDD.log`; fallback folder — `%TEMP%\GridSight-logs`). Logs contain character names, but no tokens. In an [Issue](https://github.com/evelens-app/evelens/issues) please include:
+**Where is the GridSight log and what to send in an Issue.** Logs are in `%APPDATA%\GridSight\logs\` (one file per day, `gridsight-YYYYMMDD.log`; *(beta.2+)* files older than 14 days are deleted; fallback folder — `%TEMP%\GridSight-logs`). Logs contain character names, but no tokens. Open an Issue with the [bug report form](https://github.com/evelens-app/evelens/issues/new?template=bug_report.yml) (or *(beta.2+)* tray → "Help & feedback" → "Report a bug") and include:
 - GridSight version ("About");
 - Windows version, EVE window mode, EVE client language, number of clients and monitors;
 - what you did, what you expected, what happened (a screenshot helps — but don't post Dashboard screenshots with your wallet or assets);
-- the log file for that day. Look through it before sending — it may contain your character names; you can replace them.
+- the relevant lines from the log for that day, not the whole file. Issues are public: replace character names, and never post tokens, wallet or asset information.
 
 Security problems — please report privately, not in Issues: [SECURITY.md](../SECURITY.md).
 
@@ -498,7 +510,7 @@ Security problems — please report privately, not in Issues: [SECURITY.md](../S
 
 GridSight is free, and no feature is locked behind a donation. If it makes your fleet life easier, you can say thanks with any amount of ISK to the in-game character **Gridsin** ("About" → "Copy character name").
 
-Ideas, wishes and bug reports: [GitHub Issues](https://github.com/evelens-app/evelens/issues) or EVE Mail to **Gridsin**.
+Ideas, wishes and bug reports: GitHub Issues — [Report a bug](https://github.com/evelens-app/evelens/issues/new?template=bug_report.yml), [Suggest a feature](https://github.com/evelens-app/evelens/issues/new?template=feature_request.yml) — or EVE Mail to **Gridsin**. *(beta.2+)* The same forms open from tray → "Help & feedback" and from "About" ("Report a bug", "Suggest a feature"); nothing is sent automatically. Before posting, remove character names, tokens, wallet and other personal data from the text and screenshots. Common questions: [FAQ](../FAQ.md).
 
 GridSight is an independent project made by a fellow EVE player in spare time. It is provided **"as is"**, without warranty of any kind; use it at your own discretion. GridSight is not affiliated with or endorsed by Fenris Creations or CCP hf.
 

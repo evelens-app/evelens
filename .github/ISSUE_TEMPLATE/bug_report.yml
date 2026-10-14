@@ -1,45 +1,74 @@
 name: Bug report
-description: Something in EveLens does not work as expected
+description: Something in GridSight does not work as expected
 labels: [bug]
 body:
   - type: markdown
     attributes:
-      value: Thanks for taking the time to report a problem! Please do not post ESI tokens, API keys or private information.
+      value: |
+        > [!WARNING]
+        > **Issues are public.** Do not post ESI tokens, full log files, character names, wallet or asset information, or your location. Crop or blur screenshots before attaching them.
+
+        Security problems: please report them privately, see [SECURITY.md](https://github.com/evelens-app/evelens/blob/main/SECURITY.md).
   - type: input
     id: version
     attributes:
-      label: EveLens version
+      label: GridSight version
       description: Tray icon → About
-      placeholder: v1.0.0
+      placeholder: 1.0.0-beta.2
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      description: Win+R → winver
+      placeholder: Windows 11 24H2
     validations:
       required: true
   - type: dropdown
     id: client-lang
     attributes:
       label: EVE client language
-      options: [English, Russian, German, Chinese, French, Japanese, Spanish, Other]
+      options: [English, Russian, German, Chinese, French, Japanese, Spanish, Korean, Other]
     validations:
       required: true
-  - type: dropdown
-    id: window-mode
-    attributes:
-      label: EVE window mode
-      options: [Fixed window, Window mode, Fullscreen, Not relevant]
-  - type: input
-    id: windows
-    attributes:
-      label: Windows version
-      placeholder: Windows 11 24H2
   - type: textarea
     id: what
     attributes:
       label: What happened?
-      description: What did you do, what did you expect, and what happened instead?
+      description: A short description of the problem.
     validations:
       required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Start two EVE clients in Fixed Window mode
+        2. Open tray → Mining
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual result (optional)
+      placeholder: |
+        Expected: ...
+        Actual: ...
+  - type: dropdown
+    id: window-mode
+    attributes:
+      label: EVE window mode (optional)
+      options: [Fixed Window, Windowed, Fullscreen, Not relevant]
+  - type: input
+    id: clients
+    attributes:
+      label: Number of EVE clients (optional)
+      placeholder: "3"
   - type: textarea
     id: log
     attributes:
       label: Log lines (optional)
-      description: "From %APPDATA%\EveLens\logs — remove character names if you prefer."
+      description: 'Only the relevant lines from the log in %APPDATA%\GridSight\logs (gridsight-YYYYMMDD.log), not the whole file. Replace character names.'
       render: text

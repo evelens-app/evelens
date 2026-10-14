@@ -1,15 +1,27 @@
-name: Idea or wish
-description: Suggest a feature or an improvement
+name: Feature request
+description: Suggest a feature or an improvement for GridSight
 labels: [idea]
 body:
-  - type: textarea
-    id: idea
+  - type: markdown
     attributes:
-      label: What would you like EveLens to do?
+      value: |
+        > [!WARNING]
+        > **Issues are public.** Do not post ESI tokens, full log files, character names, wallet or asset information, or your location. Crop or blur screenshots before attaching them.
+  - type: textarea
+    id: what
+    attributes:
+      label: What would you like GridSight to do?
     validations:
       required: true
   - type: textarea
     id: why
     attributes:
-      label: How would it help your gameplay?
+      label: Why? What is your use case?
       description: Multiboxing setup, activity (ratting, mining, abyssals, PvP…), anything that gives context.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered (optional)
+      description: How you handle it today, or other tools that do something similar.

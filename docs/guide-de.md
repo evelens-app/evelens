@@ -86,7 +86,7 @@ GridSight muss nicht installiert werden – es läuft aus dem Ordner, in dem die
 
 Doppelklicken Sie auf `GridSight.exe`. Erscheint das Fenster **„Der Computer wurde durch Windows geschützt“** und der Hash stimmt, klicken Sie auf **Weitere Informationen** → **Trotzdem ausführen** (siehe Warnung am Anfang dieses Abschnitts). Normalerweise fragt Windows nur einmal pro Dateiversion.
 
-*(beta.2+)* Beim allerersten Start zeigt GridSight ein kurzes Begrüßungsfenster. Nachdem Sie es geschlossen haben, läuft GridSight im Tray weiter.
+*(beta.2+)* Beim allerersten Start zeigt GridSight das Fenster **„Willkommen — GridSight“**: wo das Tray-Symbol ist, was als Nächstes zu tun ist, und unter „Aktuell“ den Status – wie viele EVE-Clients gefunden wurden und ob der Log-Ordner des Spiels gefunden wurde (falls nicht, legen Sie ihn über „Einstellungen öffnen“ → „Allgemein“ fest). Außerdem verlinkt es dieses Handbuch, SECURITY und PRIVACY. Klicken Sie „Verstanden“ oder setzen Sie „Nicht mehr anzeigen“; GridSight läuft im Tray weiter.
 
 ### Schritt 5. Wenn der Virenscanner Alarm schlägt
 
@@ -126,7 +126,8 @@ Alle Einstellungen werden sofort übernommen und gespeichert – eine Schaltflä
 | Update-Prüfung | an | Einstellungen → „Allgemein“ → „Nach Updates suchen (täglich, GitHub)“ |
 | Autostart | aus | Einstellungen → „Allgemein“ → „GridSight mit Windows starten“ |
 | Account-Timer | an (wirken erst, wenn ein Charakter in der „Übersicht“ verbunden ist) | Einstellungen → „Allgemein“ → „Account-Timer überwachen“ |
-| Hintergrund-Sync der Handelshistorie *(beta.2+)* | an (zusammen mit den Account-Timern) | Einstellungen → „Allgemein“ → „Account-Timer“ – eigener Schalter (Abschnitt 13) |
+| Hintergrund-Sync der Handelshistorie *(beta.2+)* | an (wirkt nur, solange die Account-Timer an sind) | Einstellungen → „Allgemein“ → „Account-Timer“ → „Handelshistorie sammeln (stündlich)“ (Abschnitt 13) |
+| Überwachung eigener Marktaufträge *(beta.2+)* | an (wirkt nur, solange die Account-Timer an sind und in der „Übersicht“ ein Charakter verbunden ist) | Einstellungen → „Allgemein“ → „Account-Timer“ → „Eigene Marktaufträge überwachen (überboten, laufen ab)“ (Abschnitt 13) |
 
 ### Schritt 9. Aktualisieren
 
@@ -138,14 +139,14 @@ Alle Einstellungen werden sofort übernommen und gespeichert – eine Schaltflä
 ### Schritt 10. Deinstallieren
 
 1. Ist der Autostart aktiv, zuerst „GridSight mit Windows starten“ abwählen – oder später im Registrierungs-Editor den Wert `GridSight` unter `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run` löschen.
-2. Optional: Charaktere trennen – „ESI trennen“ im Tab „Charaktere“ und die Schaltfläche zum Trennen im Fenster „Übersicht“ *(beta.2+)* (Abschnitte 12–13).
+2. Optional: Charaktere trennen – „ESI trennen“ im Tab „Charaktere“ und *(beta.2+)* „Trennen“ im Fenster „Übersicht“ (Abschnitte 12–13).
 3. Tray-Symbol → **Beenden**.
 4. `GridSight.exe` löschen (und `GridSight.Snapshot.exe`, falls verwendet).
-5. Ordner `%APPDATA%\GridSight` löschen: Einstellungen, Anordnung, Login-Tokens (`tokens.bin`, `snapshot-tokens.bin`), Handelshistorie (`history.db`), WebView2-Profil der „Übersicht“ (`webview2\`), Logs und Caches.
+5. Ordner `%APPDATA%\GridSight` löschen: Einstellungen, Anordnung, Login-Tokens (`tokens.bin`, `snapshot-tokens.bin`), Handelshistorie (`history.db`), Vermögensverlauf (`networth.json`), WebView2-Profil der „Übersicht“ (`webview2\`), Logs und Caches.
 6. `%USERPROFILE%\eve-snapshot` löschen – Berichte der „Übersicht“ und ESI-Rohdaten (Wallet, Assets, Standort u. a., **unverschlüsselt**).
 7. Haben Sie früher EveLens (den alten Namen) verwendet, auch `%APPDATA%\EveLens` löschen – dort können noch alte Kopien der Login-Tokens liegen.
 8. Optional: `%TEMP%\GridSight-logs` löschen (Ausweich-Logordner).
-9. Haben Sie FPS-Rechte erteilt (Abschnitt 11), entfernen Sie sich wieder aus der Gruppe: **Eingabeaufforderung als Administrator** öffnen und `net localgroup "Leistungsprotokollbenutzer" %USERNAME% /delete` ausführen (in einem englischen Windows heißt die Gruppe `"Performance Log Users"`; den genauen Befehl zeigt GridSight unter der Schaltfläche „FPS-Rechte erteilen (UAC)…“). Danach bei Windows ab- und wieder anmelden.
+9. Haben Sie FPS-Rechte erteilt (Abschnitt 11), entfernen Sie sich *vor* dem Löschen von GridSight wieder aus der Gruppe: *(beta.2+)* „ETW-Rechte entziehen (UAC)…“ unter „Allgemein“ → „Ping und FPS“, oder **Eingabeaufforderung als Administrator** öffnen und `net localgroup "Leistungsprotokollbenutzer" %USERNAME% /delete` ausführen (in einem englischen Windows heißt die Gruppe `"Performance Log Users"`; den genauen Befehl zeigt GridSight unter der Schaltfläche „FPS-Rechte erteilen (UAC)…“). Danach bei Windows ab- und wieder anmelden.
 10. Haben Sie Charaktere per ESI verbunden, widerrufen Sie den Zugriff auf der CCP-Seite: https://community.eveonline.com/support/third-party-applications/. Das Löschen lokaler Dateien allein widerruft den Zugriff nicht.
 
 Dieselbe Liste mit Erläuterungen steht in [PRIVACY.md](../PRIVACY.md), Abschnitt 8.
@@ -158,7 +159,7 @@ Dieselbe Liste mit Erläuterungen steht in [PRIVACY.md](../PRIVACY.md), Abschnit
 
 **Netzwerk.** GridSight verbindet sich mit offiziellen EVE-Diensten (SSO-Login, ESI-API, Bildserver, statische Daten), mit zKillboard, mit den Marktpreisen von Fuzzwork und mit der GitHub-API für die Update-Prüfung. Ohne Ihr Zutun kann es: einmal täglich bei GitHub nach Updates fragen (wenn aktiviert), die ESI-Anzeige verbundener Charaktere etwa alle 30 s aktualisieren, alle 10 Minuten die Account-Timer prüfen und etwa stündlich die Handelshistorie synchronisieren *(beta.2+)*, höchstens einmal pro Woche statische EVE-Daten herunterladen. Alles andere geschieht nur, wenn Sie die Funktion nutzen. Die vollständige Liste – was wohin, wann gesendet wird und wie man es abschaltet – steht in [NETWORK_CONNECTIONS.md](../NETWORK_CONNECTIONS.md) (auf Englisch).
 
-**Was auf Ihrem PC gespeichert wird:** Einstellungen, verschlüsselte Login-Tokens, Ihre Handelshistorie *(beta.2+)*, Caches öffentlicher Daten, Logs und Berichte der „Übersicht“ in `%USERPROFILE%\eve-snapshot`. Die Berichte und die Handelshistorie sind **nicht verschlüsselt** – geben Sie diese Dateien und Screenshots der „Übersicht“ nur weiter, wenn Sie diese Informationen zeigen möchten. Details und wie Sie alles löschen: [PRIVACY.md](../PRIVACY.md).
+**Was auf Ihrem PC gespeichert wird:** Einstellungen, verschlüsselte Login-Tokens, Ihre Handelshistorie und der Vermögensverlauf *(beta.2+)*, Caches öffentlicher Daten, Logs und Berichte der „Übersicht“ in `%USERPROFILE%\eve-snapshot`. Die Berichte, die Handelshistorie und der Vermögensverlauf sind **nicht verschlüsselt** – geben Sie diese Dateien und Screenshots der „Übersicht“ nur weiter, wenn Sie diese Informationen zeigen möchten. Details und wie Sie alles löschen: [PRIVACY.md](../PRIVACY.md).
 
 **Login-Tokens** werden nur auf diesem PC gespeichert, mit Windows DPAPI für Ihr Windows-Konto verschlüsselt – ein anderer Windows-Benutzer kann sie nicht entschlüsseln (Programme unter Ihrem eigenen Konto schon). Sie werden nur an die Server von CCP gesendet: an `login.eveonline.com`, um den Zugriff zu verlängern, und an `esi.evetech.net` mit jeder autorisierten Anfrage – nie an den Autor oder Dritte. Ihr EVE-Passwort sieht GridSight nie: Sie melden sich auf der offiziellen EVE-Website an. Welche Berechtigungen angefragt werden und warum: [ESI_PERMISSIONS.md](../ESI_PERMISSIONS.md).
 
@@ -177,6 +178,7 @@ Dieselbe Liste mit Erläuterungen steht in [PRIVACY.md](../PRIVACY.md), Abschnit
 - „Version X verfügbar…“ – nur wenn eine neue Version erschienen ist; öffnet die Release-Seite.
 - „Timer“ – Account-Timer (Abschnitt 13), sichtbar, wenn die Timer aktiv sind.
 - „Übersicht“ *(beta.2+)* – das Fenster „Übersicht“ (Abschnitt 13).
+- „Markt jetzt“ *(beta.2+)* – öffnet die „Übersicht“ direkt beim Abschnitt „Markt jetzt“ (Abschnitt 13).
 - „Zwischenablage analysieren (D-Scan / Lokal / Schätzung)“ – Abschnitt 9.
 - „Bergbau“ – Abschnitt 10.
 - „Schadensmonitor“ – schaltet das Schadens-Overlay ein und aus.
@@ -186,7 +188,7 @@ Dieselbe Liste mit Erläuterungen steht in [PRIVACY.md](../PRIVACY.md), Abschnit
 - „Ping/FPS: Miniaturen“, „Ping/FPS: Hauptfenster“ – Abschnitt 11.
 - „Alarme pausieren“ – neue Alarme vorübergehend nicht anzeigen.
 - „Язык / Language“ – Sprache der Oberfläche.
-- „Anleitung“ – öffnet dieses Handbuch.
+- „Hilfe & Feedback“ *(beta.2+)* – ein Untermenü: „Anleitung“ (öffnet dieses Handbuch), „Fehler melden“ und „Funktion vorschlagen“ (öffnen ein GitHub-Issue-Formular im Browser – nichts wird automatisch gesendet), „Sicherheit & Datenschutz“ (öffnet SECURITY.md), „Nach Updates suchen“. In 1.0.0-beta.1 steht hier nur „Anleitung“.
 - „Über GridSight“ – Version, Links, Update-Prüfung, Unterstützung.
 - „Beenden“
 
@@ -198,7 +200,7 @@ Dieselbe Liste mit Erläuterungen steht in [PRIVACY.md](../PRIVACY.md), Abschnit
 | „Gruppen & Hotkeys“ | Gruppen von Charakteren und Hotkeys zum Umschalten zwischen ihnen. |
 | „Alarme“ | Welche Alarme aktiv sind, Schaltflächen „Testen“, Einstellungen für Lokal und Intel. |
 | „Schaden“ | Schadensmonitor. |
-| „Allgemein“ | Sprache, EVE-Logordner, Miniaturen, Hotkey für den Bearbeitungsmodus, Zwischenablage-Analyse, Bergbau, Hotkey der „Übersicht“, Kontakt für zKillboard, Ping und FPS, Start und Updates, Account-Timer, ESI Client ID. |
+| „Allgemein“ | Sprache, EVE-Logordner, Miniaturen, Hotkey für den Bearbeitungsmodus, Zwischenablage-Analyse, Bergbau, Hotkey der „Übersicht“, Kontakt für zKillboard, Ping und FPS, Start und Updates, Account-Timer, Benachrichtigungen (Ruhezeiten), Übertragung auf einen anderen PC, ESI Client ID. |
 
 Unten im Fenster – der Link „Über / Unterstützen“.
 
@@ -350,11 +352,11 @@ Die Messwerte stammen aus dem Windows-Systemtracing (ETW – so arbeitet auch Pr
 3. GridSight starten und bei Bedarf „Erneut prüfen“ klicken. Der Status sollte „Tracing läuft: …“ lauten.
 
 > [!IMPORTANT]
-> Das ist ein Recht für Ihr **gesamtes Windows-Benutzerkonto**, nicht nur für GridSight: Jedes Programm, das unter Ihrem Konto läuft, kann dann Windows-Leistungstracing durchführen. Es bleibt bestehen, bis Sie es entfernen – Abschalten von „Ping und FPS“ oder Deinstallieren von GridSight entfernt es nicht. Zum Widerrufen: *(beta.2+)* die Schaltfläche zum Widerrufen der FPS-Rechte unter „Allgemein“ → „Ping und FPS“ verwenden (fragt erneut nach UAC) oder als Administrator den in den Einstellungen angezeigten Befehl `net localgroup "<Gruppe>" "<Sie>" /delete` ausführen. Danach neu anmelden.
+> Das ist ein Recht für Ihr **gesamtes Windows-Benutzerkonto**, nicht nur für GridSight: Jedes Programm, das unter Ihrem Konto läuft, kann dann Windows-Leistungstracing durchführen. Es bleibt bestehen, bis Sie es entfernen – Abschalten von „Ping und FPS“ oder Deinstallieren von GridSight entfernt es nicht. Zum Widerrufen: *(beta.2+)* auf **„ETW-Rechte entziehen (UAC)…“** unter „Allgemein“ → „Ping und FPS“ klicken (fragt erneut nach UAC) oder als Administrator den in den Einstellungen angezeigten Befehl `net localgroup "<Gruppe>" "<Sie>" /delete` ausführen. Danach neu anmelden.
 
 **Ping:** GridSight liest passiv die geglättete Round-Trip-Zeit, die Windows selbst für die Verbindung des Clients zum EVE-Server (Port 26000) misst. `— ms` bedeutet: keine Verbindung (Login-Bildschirm, offline) oder der Client war länger als 60 s still.
 
-**„Ping per Serververbindung (alle 30 s)“** – standardmäßig aus. Eine Ausweichlösung, wenn keine passive Messung möglich ist (keine Tracing-Rechte): GridSight öffnet eine leere TCP-Verbindung zum CCP-Server, misst den Handshake und schließt sie wieder. Es werden keine Daten übertragen, für den CCP-Server sind das aber zusätzliche Verbindungen – deshalb nur bei Bedarf einschalten.
+**„Ping per Serververbindung (alle 30 s)“** – standardmäßig aus. Eine Ausweichlösung, wenn keine passive Messung möglich ist (keine Tracing-Rechte): GridSight öffnet eine leere TCP-Verbindung zum CCP-Server, misst den Handshake und schließt sie wieder. Es werden keine Daten übertragen, für den CCP-Server sind das aber zusätzliche Verbindungen – deshalb nur bei Bedarf einschalten. *(beta.2+)* Beim Einschalten fragt GridSight nach einer Bestätigung („Aktiven Ping einschalten“).
 
 ## 12. EVE-Login (ESI)
 
@@ -381,8 +383,8 @@ GridSight verwendet seine eigene, integrierte ESI-Anwendung; das Feld „Client 
 
 **Trennen und Zugriff widerrufen:**
 
-- „ESI trennen“ neben dem Charakter löscht das Token der Anzeige von Ihrem PC.
-- *(beta.2+)* Im Fenster „Übersicht“ gibt es eine Schaltfläche zum Trennen des gewählten Charakters: Sie löscht sein Token von Ihrem PC und widerruft es bei CCP. Über die Kommandozeile: `GridSight.Snapshot logout -c "<Charakter>"`.
+- „ESI trennen“ neben dem Charakter löscht das Token der Anzeige von Ihrem PC und bittet *(beta.2+)* EVE SSO, es zu widerrufen.
+- *(beta.2+)* **„Trennen“** im Fenster „Übersicht“ trennt den gewählten Charakter: Nach einer Bestätigung löscht es sein Token von Ihrem PC und widerruft es in EVE SSO; die Snapshots bleiben. Über die Kommandozeile: `GridSight.Snapshot logout -c "<Charakter>"` oder `GridSight.Snapshot logout --all`.
 - Um den Zugriff sicher zu widerrufen, nutzen Sie die CCP-Seite: https://community.eveonline.com/support/third-party-applications/ – damit werden die Tokens bei CCP ungültig, auch wenn Kopien auf Ihrer Festplatte bleiben.
 
 Funktioniert der Zugriff nicht mehr, erscheint im Tray „ESI neu verbinden…“ und beim Charakter die Schaltfläche „Neu anmelden“.
@@ -399,7 +401,7 @@ Funktioniert der Zugriff nicht mehr, erscheint im Tray „ESI neu verbinden…�
 2. Klicken Sie auf **„Ersten Snapshot erstellen“**. Der erste Snapshot dauert einige Minuten: Statische Spieldaten und Marktpreise werden heruntergeladen.
 3. Weitere Charaktere verbinden Sie genauso und wechseln zwischen ihnen in der Liste oben im Fenster.
 
-**Schaltflächen oben:** „Aktualisieren“ – neuen Snapshot des gewählten Charakters erstellen; „Charakter verbinden“; „Im Browser öffnen“ – denselben Bericht im Standardbrowser öffnen; eine Schaltfläche zum Trennen des gewählten Charakters (Abschnitt 12). Daneben steht die Zeit des Snapshots.
+**Schaltflächen oben:** „Aktualisieren“ – neuen Snapshot des gewählten Charakters erstellen; „Charakter verbinden“; „Im Browser öffnen“ – denselben Bericht im Standardbrowser öffnen; „Trennen“ *(beta.2+)* – den gewählten Charakter trennen (Abschnitt 12). Daneben steht die Zeit des Snapshots.
 
 **Inhalt:** Kennzahlen, „To-do“ (Zusammenfassung der Ratschläge aus allen Abschnitten), „Wallet“, „Assets“ mit ISK-Schätzung, „Skills“, „Markt“ (Aufträge und Verträge), „Handel“, „Industrie“, „Fertigung“, „PI“, „PI → P2“, „Bergbau“, „Wiederaufbereitung“, „Klone“, „LP & Ansehen“, „Abyssal-Fittings“, „Fittings“ und „Gewinn“. Der Berater:
 
@@ -412,19 +414,25 @@ Funktioniert der Zugriff nicht mehr, erscheint im Tray „ESI neu verbinden…�
 
 **Filter und Suche.** Tabellen mit Suchfeld haben zusätzlich Auswahlfilter pro Spalte, „Bereiche“ mit Von–bis-Werten (Beträge wie `300k` oder `1.5m` sind möglich), einen Zähler „N von M“ und „Filter zurücksetzen“. Filter, Sortierung und das gewählte Handelszentrum werden gespeichert. **`Strg+K`** oder **`/`** (oder die Schaltfläche „Suche“) öffnet eine Suche im gesamten Snapshot – Gegenstände, Skills, Orte: mindestens 2 Buchstaben eingeben, mit ↑↓ wählen, Enter springt zur Zeile, Esc schließt.
 
+**Vermögen** *(beta.2+)*. Unter den Kennzahlen steht der Streifen **„Vermögen“**: die Summe aus Wallet, Assets (Marktschätzung), Verkaufsaufträgen zu ihrem Preis und Kaufaufträgen (Preis × Restmenge – eine obere Schätzung des gebundenen Betrags), mit der Änderung über 7 und 30 Tage und einem kleinen Liniendiagramm. Mit jedem Snapshot speichert GridSight pro Stunde und Charakter einen Punkt in `%APPDATA%\GridSight\networth.json` (400 Tage aufbewahrt, nur lokal, **nicht verschlüsselt**); ein Punkt wird nur gespeichert, wenn Wallet und Assets geladen sind. Nach dem ersten Snapshot steht im Streifen, dass die Änderung mit den nächsten Snapshots erscheint.
+
+**Markt jetzt** *(beta.2+)*. Der erste Abschnitt der „Übersicht“ („Jetzt“ im oberen Menü oder Tray → „Markt jetzt“) fasst „Handel“ für das gewählte Handelszentrum kurz zusammen: **Jetzt an Kaufaufträge verkaufen** (alle Stapel, bei denen der Sofortverkauf besser ist, mit Summe), **Verkaufsauftrag einstellen** (wo ein Auftrag deutlich mehr bringt, mit Preis und Dauer; die Summe lässt Zeilen mit langer Wartezeit und seltene Gegenstände aus), **Kaufen und weiterverkaufen** (die besten Zeilen des Stationshandel-Scanners; volatile Zeilen und Zeilen mit verdächtig hoher Marge werden ausgelassen – sie bleiben unter „Handel“) und **Orders anpassen** (überbotene, bald ablaufende und abgelaufene Orders – eine abgelaufene muss neu eingestellt werden). Für das Haupt-Handelszentrum gibt es außerdem **Anderswo teurer**: Stapel, die sich in einem anderen berechneten Handelszentrum sofort um mindestens 10 % und 3 Mio. ISK teurer verkaufen als auf dem besten Weg hier (sofort oder, wenn hier ein Auftrag empfohlen wird, per Auftrag); seltene Gegenstände und volatile Preise werden ausgelassen, Transport ist nicht eingerechnet. Die Zeilen zeigen dieselben Hinweise wie „To-do“. Die Kopier-Schaltfläche neben einer Zeile kopiert den Namen für die Marktsuche im Spiel; Umschalt+Klick kopiert den englischen Namen. Die Preise stammen aus dem Snapshot: Die Zeile oben zeigt ihr Alter und schlägt nach einer Stunde einen neuen Snapshot vor. Das ist ein Hinweis, keine Garantie – prüfe vor dem Handel das Orderbuch. *(beta.2+)* Die Karten haben außerdem eine Schaltfläche **„Preis X“**, die einen Preis für das Auftragsfeld im Spiel kopiert: bei „Verkaufsauftrag einstellen“ den empfohlenen Einstellpreis, bei „Kaufen und weiterverkaufen“ den Preis für den Kaufauftrag, bei „Orders anpassen“ den Preis, der den besten Konkurrenten überbietet.
+
 **Handelszentren.** Der Abschnitt „Handel“ wird für Jita, Amarr, Dodixie, Rens und Hek berechnet; das Handelszentrum wechseln Sie im Feld „Handelszentrum“. Die Maklergebühr berücksichtigt Ihr Ansehen. „To-do“ und die übrigen Abschnitte rechnen mit Jita.
 
 **Marktbewegungen.** Jedes Handelszentrum hat unter „Handel“ eine Karte „Marktbewegungen“ mit drei Listen: „Im Aufwind“ und „Fallend“ (7-Tage-Mittel gegen 30-Tage-Mittel) und „Preissprünge“ (letzter Tag gegen den Monatsmedian). Das ist nicht der ganze Markt – nur Gegenstände, die der Snapshot bereits kennt (Scanner-Kandidaten und Ihre Stapel zum Verkauf).
 
-**Gegenstandskarte.** Klicken Sie irgendwo in der „Übersicht“ auf einen Gegenstandsnamen. Die Karte lädt Live-Daten von ESI für 5 Handelszentren: bester Sell und Buy, Marge nach Steuer und Maklergebühr, Tagesvolumen, Anzahl der Aufträge und Sprünge von Ihrem aktuellen Standort. Ein Klick auf ein Handelszentrum zeigt den 90-Tage-Preisverlauf, den „Margenrechner“ und die Orderbücher der Station mit Markierung „Ihre Order“. Außerdem zeigt die Karte Signale aus dem Preisverlauf (steigend, fallend, Sprung, historisch günstig oder teuer, knappes Angebot …) und ein kurzes Fazit, z. B. „Kaufgelegenheit“, „Hub-Arbitrage“ oder „Wo verkaufen“ für Gegenstände, die Sie besitzen. Das sind Hinweise aus ESI-Verlauf und Aufträgen, keine Garantie – prüfen Sie das Orderbuch vor dem Handel.
+**Gegenstandskarte.** Klicken Sie irgendwo in der „Übersicht“ auf einen Gegenstandsnamen. Die Karte lädt Live-Daten von ESI für 5 Handelszentren: bester Sell und Buy, Marge nach Steuer und Maklergebühr, Tagesvolumen, Anzahl der Aufträge und Sprünge von Ihrem aktuellen Standort. Ein Klick auf ein Handelszentrum zeigt den 90-Tage-Preisverlauf, den „Margenrechner“ und die Orderbücher der Station mit Markierung „Ihre Order“. Außerdem zeigt die Karte Signale aus dem Preisverlauf (steigend, fallend, Sprung, historisch günstig oder teuer, knappes Angebot …) und ein kurzes Fazit, z. B. „Kaufgelegenheit“, „Hub-Arbitrage“ oder „Wo verkaufen“ für Gegenstände, die Sie besitzen. Das sind Hinweise aus ESI-Verlauf und Aufträgen, keine Garantie – prüfen Sie das Orderbuch vor dem Handel. *(beta.2+)* **Preisalarm.** Unter dem Margenrechner hat die Karte einen Block „Preisalarm · <Handelszentrum>“ (nur im Fenster „Übersicht“, nicht im Browser): Wähle „Verkauf fällt auf ≤“ oder „Kauf steigt auf ≥“, gib einen Preis ein (vorausgefüllt mit dem aktuell besten) und klicke auf **„Beobachten“**. Die Liste darunter zeigt die Alarme zu diesem Gegenstand mit der Schaltfläche **„Entfernen“**. Höchstens 50 Alarme; pro Gegenstand, Handelszentrum und Seite gibt es einen Alarm – ein neuer ersetzt den alten. Die Alarme liegen lokal in `%APPDATA%\GridSight\price-alerts.json` und werden im selben 10-Minuten-Zyklus wie die Account-Timer geprüft; „Account-Timer überwachen“ muss also an sein (ist es aus, weist die Karte darauf hin). Ein ausgelöster Alarm erscheint unter Tray → „Timer“ in der Gruppe „Preisalarme“, setzt einen Punkt auf das Tray-Symbol und zeigt eine Benachrichtigung; ein Klick auf die Zeile kopiert den aktuellen Preis.
 
 **Gewinn.** Der Abschnitt „Gewinn“ berechnet den tatsächlichen Gewinn aus Ihren Geschäften: FIFO über alle verbundenen Charaktere, Verkaufssteuer aus dem Wallet-Journal, Maklergebühren im Zeitraum, Fertigungskosten aus den Materialien der Blaupausen; Zeiträume, ein Tagesdiagramm und die wichtigsten Gegenstände. „Ohne Einstand“ listet Verkäufe ohne Kauf in der Historie (Loot, Bergbau, LP, Verträge oder Käufe vor Beginn der Historie) – sie zählen nicht zum Gewinn. „Gekauft, noch nicht verkauft“ ist der Rest der FIFO-Warteschlange. ESI hält Transaktionen nur etwa 30 Tage vor, daher sammelt GridSight sie in einer lokalen Datenbank, `%APPDATA%\GridSight\history.db` – bei jedem Snapshot und im Hintergrund (siehe unten).
 
 **Preisliste.** Im Fenster „Übersicht“ können Sie die Gewinnberechnung korrigieren: „Kosten festlegen“ für Gegenstände unter „Ohne Einstand“ (für eine Charge oder „für alle künftigen Verkäufe“) und „Eigenbedarf“ für Gegenstände, die Sie für sich gekauft haben – sie verlassen die FIFO-Warteschlange und zählen nicht als Verkauf. Einträge lassen sich ändern oder löschen; GridSight speichert sie in `history.db` und aktualisiert den Snapshot. Diese Schaltflächen funktionieren nur im Fenster „Übersicht“, nicht im Browser.
 
-**Account-Timer im Tray.** Sobald ein Charakter in der „Übersicht“ verbunden ist, prüft GridSight alle 10 Minuten PI-Extraktoren, freie Fertigungsslots und die Skill-Warteschlange. Braucht etwas Aufmerksamkeit, erscheint ein Punkt am Tray-Symbol; die Liste steht unter Tray → „Timer“. Im selben Zyklus, etwa einmal pro Stunde und Charakter, synchronisiert GridSight außerdem Wallet-Transaktionen, Wallet-Journal und Industrie-Jobs in `history.db` für den Abschnitt „Gewinn“. „Allgemein“ → „Account-Timer überwachen“ schaltet die Timer ab; *(beta.2+)* ein eigener Schalter im selben Block schaltet den Hintergrund-Sync der Handelshistorie ab.
+**Account-Timer im Tray.** Sobald ein Charakter in der „Übersicht“ verbunden ist, prüft GridSight alle 10 Minuten PI-Extraktoren, freie Fertigungsslots und die Skill-Warteschlange. Braucht etwas Aufmerksamkeit, erscheint ein Punkt am Tray-Symbol; die Liste steht unter Tray → „Timer“. Im selben Zyklus, etwa einmal pro Stunde und Charakter, synchronisiert GridSight außerdem Wallet-Transaktionen, Wallet-Journal und Industrie-Jobs in `history.db` für den Abschnitt „Gewinn“. „Allgemein“ → „Account-Timer überwachen“ schaltet die Timer ab; *(beta.2+)* **„Handelshistorie sammeln (stündlich)“** im selben Block schaltet nur den Hintergrund-Sync der Handelshistorie ab (die Historie wird dann nur bei einem Snapshot aktualisiert).
 
-**Netzwerk und Dateien.** Die Seite der „Übersicht“ öffnet sich für sich genommen ohne Netzwerk. Wenn Sie eine Gegenstandskarte öffnen, fragt die Seite Live-Marktdaten bei der öffentlichen ESI und Symbole bei `images.evetech.net` ab; Login-Daten werden nicht gesendet, aber die Abfrage der Sprungzahl teilt CCP Ihr aktuelles Sonnensystem mit. Berichte werden in `%USERPROFILE%\eve-snapshot\` gespeichert: `latest-<Charakter>.html`, datierte Kopien `<Charakter>-<Datum>.html` und `.md` sowie rohe ESI-Antworten in `raw\`. Sie enthalten Wallet, Assets, Aufträge, Standort u. a. und sind **nicht verschlüsselt** – geben Sie sie nicht weiter. Details: [PRIVACY.md](../PRIVACY.md), [NETWORK_CONNECTIONS.md](../NETWORK_CONNECTIONS.md).
+**Eigene Marktaufträge überwachen** *(beta.2+)*. Im selben 10-Minuten-Zyklus liest GridSight die offenen Aufträge des verbundenen Charakters und die öffentlichen Marktbücher zu deren Gegenständen (höchstens 40 Bücher pro Charakter und Zyklus; die übrigen Aufträge werden nur nach Ablauf geprüft). Ein Auftrag ist **überboten**, wenn ein anderer Auftrag am selben Ort auf derselben Seite einen besseren Preis hat (eigene Aufträge zählen nicht). Überbotene Aufträge, Aufträge, die innerhalb von 24 Stunden ablaufen, und abgelaufene Aufträge erscheinen unter Tray → „Timer“ und setzen einen Punkt auf das Tray-Symbol; mehr als 5 Zeilen pro Charakter werden zu „…und N weitere“ zusammengefasst. Ein Klick auf eine überbotene Zeile kopiert den Preis, der den besten um einen EVE-Preisschritt (4 signifikante Stellen) übertrifft, in der Form, die das Preisfeld im Spiel annimmt (ohne Tausendertrennzeichen, Punkt als Dezimaltrenner). Eine Tray-Benachrichtigung erscheint einmal, wenn ein neuer Auftrag überboten wird, nicht erneut für denselben Auftrag. Dafür wird die Berechtigung für Marktaufträge genutzt, die die Anmeldung in der „Übersicht“ ohnehin anfordert; GridSight liest Aufträge nur und ändert sie nie. Abschalten: **„Eigene Marktaufträge überwachen (überboten, laufen ab)“** unter „Allgemein“ → „Account-Timer“ (oder die Timer ganz ausschalten).
+
+**Netzwerk und Dateien.** Die Seite der „Übersicht“ öffnet sich für sich genommen ohne Netzwerk. Wenn Sie eine Gegenstandskarte öffnen, fragt die Seite Live-Marktdaten bei der öffentlichen ESI und Symbole bei `images.evetech.net` ab; Login-Daten werden nicht gesendet, aber die Abfrage der Sprungzahl teilt CCP Ihr aktuelles Sonnensystem mit. Berichte werden in `%USERPROFILE%\eve-snapshot\` gespeichert: `latest-<Charakter>.html`, datierte Kopien `<Charakter>-<Datum>.html` und `.md` sowie rohe ESI-Antworten in `raw\`. *(beta.2+)* Pro Charakter werden nur die 20 neuesten datierten Kopien behalten (Abschnitt 14, `--keep`). Sie enthalten Wallet, Assets, Aufträge, Standort u. a. und sind **nicht verschlüsselt** – geben Sie sie nicht weiter. Details: [PRIVACY.md](../PRIVACY.md), [NETWORK_CONNECTIONS.md](../NETWORK_CONNECTIONS.md).
 
 ## 14. GridSight.Snapshot für Fortgeschrittene (Kommandozeile)
 
@@ -436,11 +444,11 @@ Funktioniert der Zugriff nicht mehr, erscheint im Tray „ESI neu verbinden…�
 |---|---|
 | `GridSight.Snapshot login` | EVE-Login im Browser (nur Lesezugriff, wie „Charakter verbinden“); einmal pro Charakter |
 | `GridSight.Snapshot login --fits-write` | Ebenso, plus Recht zum Anlegen gespeicherter Fittings (nur für `--export-fits` nötig) |
-| `GridSight.Snapshot logout -c "<Charakter>"` | *(beta.2+)* Token des Charakters von Ihrem PC löschen und bei CCP widerrufen |
+| `GridSight.Snapshot logout -c "<Charakter>"` | *(beta.2+)* Token des Charakters von Ihrem PC löschen und bei CCP widerrufen; `logout --all` – alle Charaktere |
 | `GridSight.Snapshot` | Snapshot aller verbundenen Charaktere |
 | `GridSight.Snapshot -c "<Charakter>"` | Snapshot eines Charakters |
 | `GridSight.Snapshot -c "<Charakter>" --export-fits <Rumpf\|all> [--top N]` | Top-N (1–3) Abyss-Fittings des Rumpfes als `GridSight <Rumpf> #N` in die gespeicherten Fittings im Spiel schreiben |
-| `GridSight.Snapshot --keep N` | *(beta.2+)* Nur die N neuesten datierten Kopien der Berichte behalten |
+| `GridSight.Snapshot --keep N` | *(beta.2+)* Die N neuesten datierten Kopien der Berichte pro Charakter behalten (Standard 20; `0` – nie löschen) |
 | `GridSight.Snapshot --lang de` | Sprache des Berichts: `de`, `en`, `ru`, `zh-Hans` (Standard – Sprache der GridSight-Oberfläche, sonst Windows) |
 | `GridSight.Snapshot --help` | Vollständige Liste der Optionen (`--no-open`, `--no-market`, `--no-fits`, `--hubs` u. a.) |
 
@@ -452,7 +460,11 @@ Funktioniert der Zugriff nicht mehr, erscheint im Tray „ESI neu verbinden…�
 
 **Sprache der Oberfläche:** „Allgemein“ → „Sprache“ → „Sprache der Oberfläche“: „Auto (Windows-Sprache)“, English, Русский, Deutsch, 简体中文 (auch Tray → „Язык / Language“). Wird sofort übernommen. Sie ist unabhängig von der EVE-Client-Sprache (Abschnitt 6). Namen von Gegenständen aus den CCP-Daten werden in allen Oberflächen außer der russischen auf Englisch angezeigt.
 
-**Updates:** „Nach Updates suchen (täglich, GitHub)“ ist standardmäßig aktiv. Einmal täglich fragt GridSight bei GitHub nach einer neuen Version. Gibt es eine – Menüpunkt „Version X verfügbar…“ im Tray, eine Benachrichtigung und eine Zeile unter „Über“. **GridSight lädt und installiert nie selbst etwas** – aktualisieren Sie manuell (Abschnitt 2, Schritt 9). „Betaversionen anbieten“ – auch über Betas informieren. Manuell prüfen: „Über GridSight“ → „Nach Updates suchen“.
+**Updates:** „Nach Updates suchen (täglich, GitHub)“ ist standardmäßig aktiv. Einmal täglich fragt GridSight bei GitHub nach einer neuen Version. Gibt es eine – Menüpunkt „Version X verfügbar…“ im Tray, eine Benachrichtigung und eine Zeile unter „Über“. **GridSight lädt und installiert nie selbst etwas** – aktualisieren Sie manuell (Abschnitt 2, Schritt 9). „Betaversionen anbieten“ – auch über Betas informieren. Manuell prüfen: „Über GridSight“ → „Nach Updates suchen“ oder *(beta.2+)* Tray → „Hilfe & Feedback“ → „Nach Updates suchen“.
+
+**Ruhezeiten** *(beta.2+)*. „Allgemein“ → „Benachrichtigungen“: **„Ruhezeiten“** aktivieren und die Stunden in den beiden Auswahllisten festlegen (00:00–23:00). Auch über Mitternacht – 23:00 — 07:00; gleiche Werte bedeuten den ganzen Tag. In den Ruhezeiten zeigt GridSight keine Pop-up-Benachrichtigungen zu Preisen, Aufträgen oder einem fertigen Snapshot; der Punkt am Tray-Symbol und die Zeilen unter „Timer“ bleiben. Hinweise beim ersten Start und bei der Datenübernahme werden immer angezeigt. Standardmäßig aus (Standardbereich 01:00–08:00). Die Schaltfläche **„Benachrichtigung testen“** zeigt auch während der Ruhezeiten eine Beispielbenachrichtigung. Wenn gar keine Benachrichtigungen erscheinen, prüfen Sie „Nicht stören“ in Windows.
+
+**Auf anderen PC übertragen** *(beta.2+)*. „Allgemein“ → „Auf anderen PC übertragen“: **„Einstellungen exportieren…“** schreibt eine .zip nur mit `settings.json`, `layout.json`, `timers.json`, `mining.json` und `price-alerts.json`. ESI-Tokens (`*.bin`), Handelshistorie (`history.db`), Vermögensverlauf, Logs und Caches sind nie enthalten – verbinden Sie die Charaktere auf dem neuen PC erneut. **„Einstellungen importieren…“** prüft das Archiv (nur diese Dateinamen, je höchstens 2 MB, je ein JSON-Objekt) und merkt es für den Import vor; angewendet wird er beim nächsten Start von GridSight (Tray → „Beenden“, dann erneut starten). Die bisherigen Dateien werden in einen Ordner `backup-<Datum-Uhrzeit>` neben den Einstellungen in `%APPDATA%\GridSight` kopiert.
 
 **Autostart:** „Allgemein“ → „Start“ → „GridSight mit Windows starten“. Trägt GridSight in den Autostart Ihres Benutzers ein (Registrierung `HKCU\…\Run`); Abwählen entfernt den Eintrag.
 
@@ -486,11 +498,11 @@ Funktioniert der Zugriff nicht mehr, erscheint im Tray „ESI neu verbinden…�
 
 **GridSight startet nicht / zeigt einen Fehler.** Die Meldung nennt den Ort des Logs. Ist die Einstellungsdatei beschädigt, stellt GridSight die Einstellungen automatisch aus `settings.json.bak` wieder her.
 
-**Wo liegt das GridSight-Log und was gehört in ein Issue.** Die Logs liegen in `%APPDATA%\GridSight\logs\` (eine Datei pro Tag, `gridsight-JJJJMMTT.log`; Ausweichordner – `%TEMP%\GridSight-logs`). Die Logs enthalten Charakternamen, aber keine Tokens. Bitte geben Sie in einem [Issue](https://github.com/evelens-app/evelens/issues) an:
+**Wo liegt das GridSight-Log und was gehört in ein Issue.** Die Logs liegen in `%APPDATA%\GridSight\logs\` (eine Datei pro Tag, `gridsight-JJJJMMTT.log`; *(beta.2+)* Dateien älter als 14 Tage werden gelöscht; Ausweichordner – `%TEMP%\GridSight-logs`). Die Logs enthalten Charakternamen, aber keine Tokens. Öffnen Sie ein Issue mit dem [Fehlerformular](https://github.com/evelens-app/evelens/issues/new?template=bug_report.yml) (oder *(beta.2+)* Tray → „Hilfe & Feedback“ → „Fehler melden“) und geben Sie an:
 - GridSight-Version („Über GridSight“);
 - Windows-Version, Fenstermodus von EVE, Sprache des EVE-Clients, Anzahl der Clients und Monitore;
 - was Sie getan haben, was Sie erwartet haben, was passiert ist (ein Screenshot hilft sehr – aber keine Screenshots der „Übersicht“ mit Wallet oder Assets veröffentlichen);
-- die Logdatei des betreffenden Tages. Sehen Sie sie vor dem Senden durch – sie kann Namen Ihrer Charaktere enthalten; diese können Sie ersetzen.
+- die relevanten Zeilen aus dem Log des betreffenden Tages, nicht die ganze Datei. Issues sind öffentlich: Charakternamen ersetzen und nie Tokens, Wallet- oder Asset-Daten veröffentlichen.
 
 Sicherheitsprobleme bitte vertraulich melden, nicht in den Issues: [SECURITY.md](../SECURITY.md).
 
@@ -498,7 +510,7 @@ Sicherheitsprobleme bitte vertraulich melden, nicht in den Issues: [SECURITY.md]
 
 GridSight ist kostenlos, und keine Funktion hängt von einer Spende ab. Wenn es Ihnen das Flottenleben erleichtert, können Sie sich mit einem beliebigen ISK-Betrag an den Charakter **Gridsin** im Spiel bedanken („Über GridSight“ → „Charakternamen kopieren“).
 
-Vorschläge, Wünsche und Fehlermeldungen: [GitHub Issues](https://github.com/evelens-app/evelens/issues) oder per EVE-Mail an **Gridsin**.
+Vorschläge, Wünsche und Fehlermeldungen: GitHub Issues – [Fehler melden](https://github.com/evelens-app/evelens/issues/new?template=bug_report.yml), [Funktion vorschlagen](https://github.com/evelens-app/evelens/issues/new?template=feature_request.yml) – oder per EVE-Mail an **Gridsin**. *(beta.2+)* Dieselben Formulare öffnen sich über Tray → „Hilfe & Feedback“ und über „Über GridSight“ („Fehler melden“, „Funktion vorschlagen“); nichts wird automatisch gesendet. Entfernen Sie vor dem Posten Charakternamen, Tokens, Wallet und andere persönliche Daten aus Text und Screenshots. Häufige Fragen: [FAQ](../FAQ.md).
 
 GridSight ist ein unabhängiges Projekt, das ein EVE-Spieler in seiner Freizeit entwickelt. Es wird **„wie besehen“** ohne jegliche Gewährleistung bereitgestellt; die Nutzung erfolgt nach eigenem Ermessen. GridSight ist nicht mit Fenris Creations / CCP hf. verbunden und wird von ihnen nicht unterstützt.
 
